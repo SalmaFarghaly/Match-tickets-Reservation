@@ -1,1 +1,58 @@
-<p>signup works!</p>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css">
+<div id="sign-up-form" >
+    <form [formGroup]="signUpForm" (ngSubmit)="onFormSubmit()">
+    
+        <label>
+        User Name
+        <input placeholder="Enter a username" type="text" formControlName="userName">
+        </label>
+    
+        <label>
+        First Name
+        <input placeholder="Enter your first name" type="text" formControlName="lastName">
+        </label>
+
+        <label>
+        Last Name
+        <input placeholder="Enter your last name" type="text" formControlName="lastName">
+        </label>
+
+        <label for="">Email
+            <input placeholder="Enter your email address" type="email" formControlName="email">
+        </label>
+
+        <label>
+        Password
+        <input placeholder="Enter your password" type="password" formControlName="password">
+        </label>
+
+        <label>
+            Retype password
+            <input placeholder="confirm your password" type="password" formControlName="cnfPassword">
+        </label>
+
+        <label>
+            Birth Date 
+            <input type="date" formControlName="birthDate">
+        </label>
+        <p>
+            <label for="">Choose your gender :</label>
+            <input class="radio-btn" type="radio" value="male" formControlName="gender">Male
+            <input class="radio-btn" type="radio" value="female" formControlName="gender">Female
+        </p>
+        <br>
+        <div style="display: flex;justify-content: space-between;align-items: center;">
+            <div style="text-decoration: underline;">
+                <a href="/signin">Are you already a user ?</a>
+            </div>
+            
+            <input style="display: inline;" class="core-btn" id="submit-btn" type="submit" value="Sign Up">
+        </div>
+        <br>
+        <br>    
+        <br>
+        <br>
+    </form>
+</div>

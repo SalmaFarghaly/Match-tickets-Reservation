@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+
+:root {
+    --coral: #ff4646;
+    --tomato: #f44336;
+    --barbie-pink: #f83094;
+    --brick: #c02221;
+    --lightest-grey: #fcfcfc;
+    --light-grey: #f4f4f7;
+    --pale-grey: #dadbe6;
+    --pale-grey-two: #f0f1f7;
+    --pale-grey-four:#eff2f6;
+    --cool-grey: #9597a6;
+    --warm-grey: #727272;
+    --battleship-grey: #636780;
+    --silver: #dad9e0;
+    --slate: #545871;
+    --bahama-blue: #26547c;
+    --light-navy-blue: #26547c;
+    --dark-slate-blue: #1a3953;
+    --greyish-brown: #3d3d3d;
+    --black-russian: #202124;
+    --bluish-green: #0fa572;
+    --sf-yellow: #fdab11;
+    --cool-grey-two: #a7a9ad;
+    --purplish-blue: #7846ff;
+  }

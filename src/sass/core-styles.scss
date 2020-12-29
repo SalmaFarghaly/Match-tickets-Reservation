@@ -1,0 +1,18 @@
+@import "style-variables";
+// @import "styles";
+
+.core-btn{
+    width: fit-content;
+    border-radius: 10px !important;
+    box-shadow: 0 0 18px 0 rgba(0, 0, 0, 0.3);
+    font-size: calc(11px + 0.8vmin);
+    padding:10px 20px;
+    color: white;
+    background-color: var(--light-navy-blue);
+    text-align: center;
+    font-weight: 500;
+    border-width: 0;
+    -webkit-transition: background-color 300ms linear;
+    -ms-transition: background-color 300ms linear;
+    transition: background-color 300ms linear;
+}
