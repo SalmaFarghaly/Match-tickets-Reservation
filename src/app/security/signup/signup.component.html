@@ -1,44 +1,78 @@
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css">
-<div id="sign-up-form" >
+<div class="container">
+<div class="row">
+    
+<div id="sign-up-form" class="col-lg-6 col-md-8 col-sm-12 col-xs-12" >
     <form [formGroup]="signUpForm" (ngSubmit)="onFormSubmit()">
     
         <label>
-        User Name
+        User Name <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
         <input placeholder="Enter a username" type="text" formControlName="userName">
         </label>
+        <div *ngIf="userName && userName.invalid && (userName.dirty || userName.touched)" class="alert alert-danger">
+            <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:userName}"></ng-container>
+        </div>
     
         <label>
-        First Name
-        <input placeholder="Enter your first name" type="text" formControlName="lastName">
+        First Name <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
+        <input placeholder="Enter your first name" type="text" formControlName="firstName"required>
         </label>
+        <div *ngIf=" firstName && firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
+            <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:firstName}"></ng-container>
+        </div>
+
 
         <label>
-        Last Name
+        Last Name <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
         <input placeholder="Enter your last name" type="text" formControlName="lastName">
         </label>
+        <div *ngIf="lastName && lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger">
+            <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:lastName}"></ng-container>
+        </div>
 
-        <label for="">Email
+        <label for="">Email <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
             <input placeholder="Enter your email address" type="email" formControlName="email">
         </label>
+        <div *ngIf="email && email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+            <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:email}"></ng-container>
+        </div>
 
         <label>
-        Password
+        Password <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
         <input placeholder="Enter your password" type="password" formControlName="password">
         </label>
+      
+
+        <div *ngIf="password && password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+            <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:password}"></ng-container>
+            <div *ngIf="password.errors && !password.errors.required && password.errors.NotMatch">
+                Your password should be at least eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.
+            </div>
+        </div>
 
         <label>
-            Retype password
+            Retype password <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
             <input placeholder="confirm your password" type="password" formControlName="cnfPassword">
         </label>
+        <div *ngIf="cnfPassword && cnfPassword.invalid && (cnfPassword.dirty || cnfPassword.touched)" class="alert alert-danger">
+            <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:cnfPassword}"></ng-container>
+            <div *ngIf="cnfPassword.errors &&!cnfPassword.errors.required && cnfPassword.errors.NotSame">
+                The passwords don't match.    
+            </div>
+        </div>
 
         <label>
-            Birth Date 
+            Birth Date <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
             <input type="date" formControlName="birthDate">
         </label>
+
+        <div *ngIf="birthDate && birthDate.invalid && (birthDate.dirty || birthDate.touched)" class="alert alert-danger">
+            <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:birthDate}"></ng-container>
+        </div>
         <p>
-            <label for="">Choose your gender :</label>
+            <label for="">Choose your gender <ng-container [ngTemplateOutlet]="requiredMark"></ng-container></label>
             <input class="radio-btn" type="radio" value="male" formControlName="gender">Male
             <input class="radio-btn" type="radio" value="female" formControlName="gender">Female
         </p>
@@ -47,7 +81,6 @@
             <div style="text-decoration: underline;">
                 <a href="/signin">Are you already a user ?</a>
             </div>
-            
             <input style="display: inline;" class="core-btn" id="submit-btn" type="submit" value="Sign Up">
         </div>
         <br>
@@ -56,3 +89,16 @@
         <br>
     </form>
 </div>
+</div>
+</div>
+
+
+<ng-template #requiredErr let-item='item'>
+        <div *ngIf="item.errors.required">
+            {{msgErr}}
+        </div>
+</ng-template>
+
+<ng-template #requiredMark>
+    <span style="color: red;">*</span>
+</ng-template>
