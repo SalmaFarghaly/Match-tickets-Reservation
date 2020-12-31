@@ -15,4 +15,9 @@
     -webkit-transition: background-color 300ms linear;
     -ms-transition: background-color 300ms linear;
     transition: background-color 300ms linear;
+
+}
+.disabled-btn{
+    @extend .core-btn;
+    opacity: 0.5;
 }

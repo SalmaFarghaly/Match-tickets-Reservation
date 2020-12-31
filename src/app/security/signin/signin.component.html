@@ -1,1 +1,48 @@
-<p>signin works!</p>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css">
+<div class="container">
+<div class="row">
+    
+<div id="sign-in-form" class="col-lg-6 col-md-8 col-sm-12 col-xs-12" >
+    <form [formGroup]="signInForm" (ngSubmit)="onFormSubmit()">
+    
+        <label>
+        User Name <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
+        <input class="data required" placeholder="Enter your username" type="text" formControlName="userName">
+        </label>
+        <div *ngIf="userName && userName.invalid && (userName.dirty || userName.touched)" class="alert alert-danger">
+            <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:userName}"></ng-container>
+        </div>
+    
+      
+        <label>
+        Password <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
+        <input class="data required" placeholder="Enter your password" type="password" formControlName="password">
+        </label>
+        <br>
+      
+        <div style="display: flex;justify-content: space-between;align-items: center;">
+            <div style="text-decoration: underline;">
+                <a href="/signup">Not a user ? Create an account</a>
+            </div>
+            <input style="display: inline;"  [ngClass]="{'core-btn':signInForm.valid,'disabled-btn':!signInForm.valid}" id="submit-btn" type="submit" value="Sign In" [disabled]="!signInForm.valid">
+        </div>
+        <br>
+        <br>    
+        <br>
+        <br>
+    </form>
+</div>
+</div>
+</div>
+
+
+<ng-template #requiredErr let-item='item'>
+        <div *ngIf="item.errors.required">
+            {{msgErr}}
+        </div>
+</ng-template>
+
+<ng-template #requiredMark>
+    <span style="color: red;">*</span>
+</ng-template>

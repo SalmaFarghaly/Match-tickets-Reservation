@@ -4,6 +4,7 @@ import { passwordValidator,checkPasswords } from './valiadtors'
 
 
 
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -14,6 +15,9 @@ export class SignupComponent implements OnInit {
   constructor(private fb: FormBuilder) {
 
    }
+
+
+  cities: any = ['Alex', 'Cairo', 'Assuit','Luxor','Asswan']
 
   msgErr="This field is required.";
   signUpForm=new FormGroup({
@@ -52,7 +56,11 @@ export class SignupComponent implements OnInit {
  
   ngOnInit(): void {
   }
+
   onFormSubmit(){
+    // console.log("WEEEEEEEEEEEEEEEEEEEEE")
+    console.log(this.signUpForm.controls)
+    // console.log(data)
     
   }
   
@@ -63,6 +71,7 @@ export class SignupComponent implements OnInit {
   get cnfPassword(){return this.signUpForm.get('cnfPassword')}
   get email(){return this.signUpForm.get('email')}
   get birthDate(){return this.signUpForm.get('birthDate')}
+  get city(){return this.signUpForm.get('city')}
   
 
 }
