@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl,FormGroup,Validators,FormBuilder } from '@angular/forms';
+import {AuthService} from '../services/auth.service'
 
 @Component({
   selector: 'app-signin',
@@ -8,7 +9,8 @@ import { FormControl,FormGroup,Validators,FormBuilder } from '@angular/forms';
 })
 export class SigninComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) { }
+  userData={}
+  constructor(private fb: FormBuilder,private _auth:AuthService) { }
 
   ngOnInit(): void {
   }
@@ -26,6 +28,14 @@ export class SigninComponent implements OnInit {
 
   onFormSubmit(){
     console.log("Valid Sign In data")
+    this.userData={
+      'userName':this.userName?.value,
+      'password':this.password?.value
+    }
+    this._auth.loginUser(this.userData).subscribe(
+      res=>console.log(res),
+      err=>console.log(err)
+    )
 
   }
 

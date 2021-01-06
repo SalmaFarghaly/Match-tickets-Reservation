@@ -97,6 +97,12 @@
             <input class="radio-btn" type="radio" value="female" formControlName="gender">Female
         </p>
         <br>
+        <p>
+            <label for="">Choose your role<ng-container [ngTemplateOutlet]="requiredMark"></ng-container></label>
+            <input class="radio-btn" type="radio" value="fan" formControlName="role">Fan
+            <input class="radio-btn" type="radio" value="manager" formControlName="role">Manager
+        </p>
+        <br>
         <div style="display: flex;justify-content: space-between;align-items: center;">
             <div style="text-decoration: underline;">
                 <a href="/signin">Are you already a user ?</a>
