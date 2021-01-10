@@ -14,7 +14,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http'
 import {AuthService} from '../app/security/services/auth.service';
 import { ManagerHomeComponent } from './EFA-Manager/manager-home/manager-home.component';
-import { CreateMatchComponent } from './EFA-Manager/create-match/create-match.component'
+import { CreateMatchComponent } from './EFA-Manager/create-match/create-match.component';
+import { ViewMatchComponent } from './shared/view-match/view-match.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { CreateMatchComponent } from './EFA-Manager/create-match/create-match.co
     HeaderComponent,
     FooterComponent,
     ManagerHomeComponent,
-    CreateMatchComponent
+    CreateMatchComponent,
+    ViewMatchComponent,
   ],
   imports: [
     BrowserModule,

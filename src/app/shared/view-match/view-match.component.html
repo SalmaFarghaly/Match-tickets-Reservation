@@ -1,0 +1,31 @@
+
+<div class="wrapper">
+<div class="container" style="margin-top: 20px;">
+    <div class="row">
+        <div @myInsertRemoveTrigger *ngFor="let match of matches" id="viewmatch" class="card col-lg-4 col-md-6 col-sm-12 col-xs-12 offset-lg-1">
+            <div style="display: flex;justify-content: space-between;align-items: center;">
+                <div style="display: flex;flex-direction: column;align-items: center;">
+                    <p>{{match.HomeTeam}}</p>
+                    <img [src]="imgUrl+match.HomeTeam+'.svg'" [attr.width]="'50px'" [attr.height]="'50px'" alt="">
+                </div>
+                <div style="display: flex;flex-direction: column;align-items: center;">
+                    <p>{{match.AwayTeam}}</p>
+                    <img [src]="imgUrl+match.AwayTeam+'.svg'" [attr.width]="'50px'" [attr.height]="'50px'" alt="">
+                </div>
+            </div>
+            <p style="text-align:center">{{match.Venue}}</p>
+            <p style="text-align:center">{{match.MainReferee}}</p>
+            <div style="display: flex;justify-content: space-between;align-items: center;">
+                <p style="font-weight: 400;">{{match.FirstLinseman}}</p>
+                <p style="font-weight: 400;">{{match.SecondLinseman}}</p>
+            </div>
+            <div style="display: flex;justify-content: space-between;align-items: center;">
+                <p style="font-weight: 400;">{{match.Date}}</p>
+                <p style="font-weight: 400;">{{match.Time}}</p>
+            </div>
+            <a href="" style="text-align: end;color: cornflowerblue;text-decoration: underline;">Edit</a>
+            <!-- <p style="text-align:center">{{match.MainReferee}}</p> -->
+        </div>
+    </div>
+</div>
+</div>
