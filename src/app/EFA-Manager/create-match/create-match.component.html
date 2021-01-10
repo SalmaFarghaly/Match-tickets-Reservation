@@ -1,0 +1,162 @@
+  
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css">
+<div class="container">
+<div class="row">  
+<div id="create-match-form" class="col-lg-6 col-md-8 col-sm-12 col-xs-12" >
+    <form [formGroup]="createMatchForm" (ngSubmit)="createMatch()">
+
+        <label>
+            Home Team <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
+            <select formControlName="homeTeam" class="form-control">
+                <option value="" disabled selected>Select the home team</option>
+                <option *ngFor="let team of teamsName">
+                        {{team}}
+                </option>
+            </select>
+        </label>
+
+        <div *ngIf="homeTeam && homeTeam.invalid && (homeTeam.dirty || homeTeam.touched)" class="alert alert-danger">
+            <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:homeTeam}"></ng-container>
+        </div>
+
+
+        <label>
+            Away Team <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
+            <select formControlName="awayTeam" class="form-control">
+                <option value="" disabled selected>Select the away team</option>
+                <option *ngFor="let team of teamsName">
+                        {{team}}
+                </option>
+            </select>
+        </label>
+
+        <div *ngIf="awayTeam && awayTeam.invalid && (awayTeam.dirty || awayTeam.touched)" class="alert alert-danger">
+            <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:awayTeam}"></ng-container>
+        </div>
+
+        <div *ngIf="createMatchForm.hasError('Same')" class="alert alert-danger">
+            The away team can't be the same as the home team.
+        </div>
+
+        <label>
+            Match Venue <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
+            <select formControlName="matchVenue" class="form-control">
+                <option value="" disabled selected>Select the match venue</option>
+                <option *ngFor="let venue of venues">{{venue}}</option>
+            </select>
+        </label>
+
+        <div *ngIf="matchVenue && matchVenue.invalid && (matchVenue.dirty || matchVenue.touched)" class="alert alert-danger">
+            <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:matchVenue}"></ng-container>
+        </div>
+
+
+        <label>
+            Date <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
+            <input class="data required" type="date" formControlName="date">
+        </label>
+
+        <div *ngIf="date && date.invalid && (date.dirty || date.touched)" class="alert alert-danger">
+            <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:date}"></ng-container>
+        </div>
+
+        <label>
+            time <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
+            <input class="time required" type="time" formControlName="time">
+        </label>
+
+        <div *ngIf="time && time.invalid && (time.dirty || time.touched)" class="alert alert-danger">
+            <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:time}"></ng-container>
+        </div>
+
+        
+        <label>
+            Main Referee <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
+            <select formControlName="mainReferee" class="form-control">
+                <option value="" disabled selected>Select the main referee</option>
+                <option *ngFor="let man of referees">
+                        {{man}}
+                </option>
+            </select>
+        </label>
+
+        <div *ngIf="mainReferee && mainReferee.invalid && (mainReferee.dirty || mainReferee.touched)" class="alert alert-danger">
+            <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:mainReferee}"></ng-container>
+        </div>
+
+        <div *ngIf="(linseman1&& (linseman1.dirty || linseman1.touched)) && 
+        (mainReferee && (mainReferee.dirty || mainReferee.touched)) &&(createMatchForm.errors && createMatchForm.errors.SameML1)"
+         class="alert alert-danger">
+                        You have chosen the same person to be Main referee and first Linseman
+            
+        </div>
+
+        <div *ngIf="(linseman2&&(linseman2.dirty || linseman2.touched)) && 
+        (mainReferee && (mainReferee.dirty || mainReferee.touched)) &&(createMatchForm.errors && createMatchForm.errors.SameML2)"
+         class="alert alert-danger">
+                        You have chosen the same person to be Main referee and second Linseman
+            
+        </div>
+
+        
+        <label>
+            Linseman 1 <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
+            <select formControlName="linseman1" class="form-control">
+                <option value="" disabled selected>Select the first linseman</option>
+                <option *ngFor="let man of referees">
+                        {{man}}
+                </option>
+            </select>
+        </label>
+
+        <div *ngIf="linseman1&& linseman1.invalid && (linseman1.dirty || linseman1.touched)" class="alert alert-danger">
+            <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:linseman1}"></ng-container>
+        </div>
+
+        
+        <label>
+            Linseman 2 <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
+            <select formControlName="linseman2" class="form-control">
+                <option value="" disabled selected>Select the second linseman</option>
+                <option *ngFor="let man of referees">
+                    {{man}}
+                </option>
+            </select>
+        </label>
+
+        <div *ngIf="linseman2&& linseman2.invalid && (linseman2.dirty || linseman2.touched)" class="alert alert-danger">
+            <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:linseman2}"></ng-container>
+        </div>
+
+
+        <div *ngIf="(linseman2&&(linseman2.dirty || linseman2.touched)) && (linseman1&& (linseman1.dirty || linseman1.touched)) && 
+        (mainReferee && (mainReferee.dirty || mainReferee.touched)) &&(createMatchForm.errors && createMatchForm.errors.SameL1L2)"
+         class="alert alert-danger">
+                        You have chosen the same person to be first Linseman and second Linseman
+            
+        </div>
+
+        
+        <br>
+        <input style="display: inline;"  [ngClass]="{'core-btn':createMatchForm.valid,'disabled-btn':!createMatchForm.valid}" id="submit-btn" type="submit" value="Create Match" [disabled]="!createMatchForm.valid">
+        <br>
+        <br>    
+        <br>
+        <br>
+    </form>
+</div>
+</div>
+</div>
+
+<ng-template #requiredErr let-item='item'>
+        <div *ngIf="item.errors.required">
+            {{msgErr}}
+        </div>
+</ng-template>
+
+<ng-template #requiredMark>
+    <span style="color: red;">*</span>
+</ng-template>
+
+

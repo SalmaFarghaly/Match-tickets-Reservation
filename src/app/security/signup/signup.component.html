@@ -9,7 +9,7 @@
     
         <label>
         User Name <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
-        <input placeholder="Enter a username" type="text" formControlName="userName">
+        <input class="data required" placeholder="Enter a username" type="text" formControlName="userName">
         </label>
         <div *ngIf="userName && userName.invalid && (userName.dirty || userName.touched)" class="alert alert-danger">
             <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:userName}"></ng-container>
@@ -17,7 +17,7 @@
     
         <label>
         First Name <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
-        <input placeholder="Enter your first name" type="text" formControlName="firstName"required>
+        <input class="data required" placeholder="Enter your first name" type="text" formControlName="firstName"required>
         </label>
         <div *ngIf=" firstName && firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
             <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:firstName}"></ng-container>
@@ -26,14 +26,14 @@
 
         <label>
         Last Name <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
-        <input placeholder="Enter your last name" type="text" formControlName="lastName">
+        <input class="data required" placeholder="Enter your last name" type="text" formControlName="lastName">
         </label>
         <div *ngIf="lastName && lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger">
             <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:lastName}"></ng-container>
         </div>
 
         <label for="">Email <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
-            <input placeholder="Enter your email address" type="email" formControlName="email">
+            <input class="data required" placeholder="Enter your email address" type="email" formControlName="email">
         </label>
         <div *ngIf="email && email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
             <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:email}"></ng-container>
@@ -41,7 +41,7 @@
 
         <label>
         Password <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
-        <input placeholder="Enter your password" type="password" formControlName="password">
+        <input class="data required" placeholder="Enter your password" type="password" formControlName="password">
         </label>
       
 
@@ -54,7 +54,7 @@
 
         <label>
             Retype password <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
-            <input placeholder="confirm your password" type="password" formControlName="cnfPassword">
+            <input class="data required" placeholder="confirm your password" type="password" formControlName="cnfPassword">
         </label>
         <div *ngIf="cnfPassword && cnfPassword.invalid && (cnfPassword.dirty || cnfPassword.touched)" class="alert alert-danger">
             <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:cnfPassword}"></ng-container>
@@ -65,23 +65,49 @@
 
         <label>
             Birth Date <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
-            <input type="date" formControlName="birthDate">
+            <input class="data required" type="date" formControlName="birthDate">
         </label>
 
         <div *ngIf="birthDate && birthDate.invalid && (birthDate.dirty || birthDate.touched)" class="alert alert-danger">
             <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:birthDate}"></ng-container>
         </div>
+
+        <label>
+            city <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
+            <select formControlName="city" class="form-control">
+                <option value="" disabled selected>Select your city</option>
+                <option *ngFor="let city of cities">{{city}}</option>
+            </select>
+        </label>
+
+        <div *ngIf="city && city.invalid && (city.dirty || city.touched)" class="alert alert-danger">
+            <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:city}"></ng-container>
+        </div>
+
+
+
+        <label>
+            Address 
+            <input class="data" type="text" formControlName="address">
+        </label>
+
         <p>
             <label for="">Choose your gender <ng-container [ngTemplateOutlet]="requiredMark"></ng-container></label>
             <input class="radio-btn" type="radio" value="male" formControlName="gender">Male
             <input class="radio-btn" type="radio" value="female" formControlName="gender">Female
         </p>
         <br>
+        <p>
+            <label for="">Choose your role<ng-container [ngTemplateOutlet]="requiredMark"></ng-container></label>
+            <input class="radio-btn" type="radio" value="fan" formControlName="role">Fan
+            <input class="radio-btn" type="radio" value="manager" formControlName="role">Manager
+        </p>
+        <br>
         <div style="display: flex;justify-content: space-between;align-items: center;">
             <div style="text-decoration: underline;">
                 <a href="/signin">Are you already a user ?</a>
             </div>
-            <input style="display: inline;" class="core-btn" id="submit-btn" type="submit" value="Sign Up">
+            <input style="display: inline;"  [ngClass]="{'core-btn':signUpForm.valid,'disabled-btn':!signUpForm.valid}" id="submit-btn" type="submit" value="Sign Up" [disabled]="!signUpForm.valid">
         </div>
         <br>
         <br>    

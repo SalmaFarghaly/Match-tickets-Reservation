@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl,FormGroup,Validators,FormBuilder } from '@angular/forms';
 import { passwordValidator,checkPasswords } from './valiadtors'
+import {AuthService} from '../services/auth.service'
+
 
 
 
@@ -11,9 +13,13 @@ import { passwordValidator,checkPasswords } from './valiadtors'
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,private _auth:AuthService) {
 
    }
+
+
+  cities: any = ['Alex', 'Cairo', 'Assuit','Luxor','Asswan']
+  registerUserData={}
 
   msgErr="This field is required.";
   signUpForm=new FormGroup({
@@ -46,13 +52,38 @@ export class SignupComponent implements OnInit {
     password:new FormControl('',[
       Validators.required,
       passwordValidator
+    ]),
+    role:new FormControl('',[
+      Validators.required
     ])
 
   });
  
   ngOnInit(): void {
   }
+
   onFormSubmit(){
+    console.log(this.signUpForm.controls)
+    // We have already made sure that data is valid , now we can send it to
+    // the backend.
+    this.registerUserData={
+      'userName':this.userName?.value,
+      'firstName':this.firstName?.value,
+      'lastName':this.lastName?.value,
+      'email':this.email?.value,
+      'password':this.password?.value,
+      'city':this.city?.value,
+      'birthDate':this.birthDate?.value,
+      'role':this.role?.value,
+      'gender':this.gender?.value,
+      'address':this.address?.value
+
+    }
+     this._auth.registerUser(this.registerUserData).subscribe(
+       res=>console.log(res),
+       err=>console.log(err)
+     )
+
     
   }
   
@@ -63,6 +94,10 @@ export class SignupComponent implements OnInit {
   get cnfPassword(){return this.signUpForm.get('cnfPassword')}
   get email(){return this.signUpForm.get('email')}
   get birthDate(){return this.signUpForm.get('birthDate')}
+  get city(){return this.signUpForm.get('city')}
+  get address(){return this.signUpForm.get('address')}
+  get role(){return this.signUpForm.get('role')}
+  get gender(){return this.signUpForm.get('gender')}
   
 
 }

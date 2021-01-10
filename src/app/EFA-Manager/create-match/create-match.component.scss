@@ -1,7 +1,8 @@
 @import "core-styles";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap');
 
   
-  #sign-up-form{
+  #create-match-form{
     margin-top: 20px;
     // width:50%;
     margin: auto;
@@ -24,7 +25,8 @@
     }
     #submit-btn{
       cursor: pointer;
-      
+      right: 0;
+      position: absolute;
       
     }
     label{

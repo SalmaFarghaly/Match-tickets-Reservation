@@ -11,6 +11,13 @@ import { FooterComponent } from './core/footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdmComponent } from './adm/adm.component';
+import {MatSelectModule} from '@angular/material/select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http'
+import {AuthService} from '../app/security/services/auth.service';
+import { ManagerHomeComponent } from './EFA-Manager/manager-home/manager-home.component';
+import { CreateMatchComponent } from './EFA-Manager/create-match/create-match.component';
+import { ViewMatchComponent } from './shared/view-match/view-match.component';
 
 @NgModule({
   declarations: [
@@ -20,16 +27,24 @@ import { AdmComponent } from './adm/adm.component';
     SigninComponent,
     HeaderComponent,
     FooterComponent,
-    AdmComponent
+    AdmComponent,
+    ManagerHomeComponent,
+    CreateMatchComponent,
+    ViewMatchComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     MatRadioModule,
-    NgbModule
+    NgbModule,
+    MatSelectModule,
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
