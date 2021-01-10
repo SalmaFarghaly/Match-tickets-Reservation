@@ -9,6 +9,8 @@ import { SigninComponent } from './security/signin/signin.component';
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AdmComponent } from './adm/adm.component';
 
 @NgModule({
   declarations: [
@@ -17,13 +19,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     SignupComponent,
     SigninComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    AdmComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    MatRadioModule
+    MatRadioModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
