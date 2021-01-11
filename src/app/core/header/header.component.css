@@ -51,3 +51,10 @@
   .sticky + .content {
     padding-top: 60px;
   }
+  h1{
+    color: white; 
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    font-size:x-large;
+    padding-right: 50%;
+    display: block;
+  }
