@@ -16,6 +16,7 @@ import {AuthService} from '../app/security/services/auth.service';
 import { ManagerHomeComponent } from './EFA-Manager/manager-home/manager-home.component';
 import { CreateMatchComponent } from './EFA-Manager/create-match/create-match.component';
 import { ViewMatchComponent } from './shared/view-match/view-match.component';
+import { EditMatchComponent } from './EFA-Manager/edit-match/edit-match.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { ViewMatchComponent } from './shared/view-match/view-match.component';
     ManagerHomeComponent,
     CreateMatchComponent,
     ViewMatchComponent,
+    EditMatchComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,22 +1,8 @@
 import {AbstractControl} from '@angular/forms'
 import {FormGroup} from '@angular/forms'
 
-
-// export function differentTeams1(control:AbstractControl) {
-
-// //   let pass = group.get('password')
-// //   let confirmPass = group.get('cnfPassword')
-//   const awayTeam=control.root.get('awayTeam');
-
-//   if(awayTeam&&control.value&&awayTeam.value!=''&&control.value!=''){
-
-//     console.log(awayTeam.value)
-//     console.log(control.value)
-//     return awayTeam.value === control.value ? { 'Same': true }:null   
-//   }
-//   return null;
-// }
 export function differentTeams(control:AbstractControl) {
+  console.log("HELLO")
 
 //   let pass = group.get('password')
 //   let confirmPass = group.get('cnfPassword')
@@ -25,13 +11,14 @@ export function differentTeams(control:AbstractControl) {
 
   if(awayTeam&&homeTeam&&awayTeam!==''&&homeTeam!==''){
 
-    // console.log(awayTeam.value)
+    // console.log("HELLO")
     // console.log(control.value)
     return awayTeam=== homeTeam ? { 'Same': true }:null   
   }
   return null;
 }
 export function differentMen(control:AbstractControl) {
+  console.log("HELLO")
 
 //   let pass = group.get('password')
 //   let confirmPass = group.get('cnfPassword')
@@ -57,6 +44,7 @@ export function differentMen(control:AbstractControl) {
   return null;
 }
 export function differentlinsemen(control:AbstractControl) {
+  console.log("HELLO")
 
   const linseman1=control.get('linseman1')?.value;
   const linseman2=control.get('linseman2')?.value;

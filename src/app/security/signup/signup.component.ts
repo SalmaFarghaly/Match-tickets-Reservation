@@ -67,11 +67,11 @@ export class SignupComponent implements OnInit {
     // We have already made sure that data is valid , now we can send it to
     // the backend.
     this.registerUserData={
-      'userName':this.userName?.value,
+      'name':this.userName?.value,
       'firstName':this.firstName?.value,
       'lastName':this.lastName?.value,
       'email':this.email?.value,
-      'password':this.password?.value,
+      'password':this.password?.value.toLowerCase(),
       'city':this.city?.value,
       'birthDate':this.birthDate?.value,
       'role':this.role?.value,
