@@ -21,6 +21,8 @@
                 <span *ngIf="(request.status == 'pending')">
                     <button class="btn btn-sm btn-warning" (click)= onApprove(request)>
                     <i class="fa fa-check"></i>Approve</button>
+                    <button class="btn btn-sm btn-danger" (click) = onDelete(request)>
+                    <i class="fa fa-remove"></i>Decline</button>
                 </span>
             </td>
         </tr>

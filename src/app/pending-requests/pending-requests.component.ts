@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 
 export class Request{
   constructor(
-    public _id : string,
+    public id : string,
     public name : string,
     public firstName : string,
     public lastName : string,
@@ -25,6 +25,7 @@ export class Request{
 })
 export class PendingRequestsComponent implements OnInit {
   requests!: Request[];
+  private deleteID: string = "";
   private request_server = 'http://localhost:3000/posts';
   constructor(private http : HttpClient) {}
 
@@ -44,7 +45,7 @@ export class PendingRequestsComponent implements OnInit {
   onApprove(request: Request){
     if (request.status == "pending"){
       request.status = "approved";
-      const editURL = 'http://localhost:3000/posts/' + request._id;
+      const editURL = 'http://localhost:3000/posts/' + request.id;
       this.http.post(editURL, request.status)
         .subscribe((results) => {
           this.ngOnInit();
@@ -55,5 +56,19 @@ export class PendingRequestsComponent implements OnInit {
     }
     
   }
+  onDelete(request: Request){
+    this.deleteID = request.id ;
+    console.log(this.deleteID);
+    if (confirm("Are you sure you want to decline request? Remember that declining request will delete the user.")){
+      const deleteURL = 'http://localhost:3000/posts/' + this.deleteID;
+      this.http.delete(deleteURL)
+      .subscribe((results) => {
+        this.ngOnInit();
+        });
+    }
+
+  }
+
+
 
 }
