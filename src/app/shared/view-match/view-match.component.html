@@ -1,31 +1,48 @@
-
+<!-- <script>
+      console.log("WWEEEEEEEEEEEEEEEEEEEEEE")
+    $(document).ready(function(){
+    $('#edit').click(function (event) {
+      alert($(this).index());
+    });
+  })
+  console.log("WWEEEEEEEEEEEEEEEEEEEEEE")
+</script> -->
 <div class="wrapper">
-<div class="container" style="margin-top: 20px;">
-    <div class="row">
-        <div @myInsertRemoveTrigger *ngFor="let match of matches" id="viewmatch" class="card col-lg-4 col-md-6 col-sm-12 col-xs-12 offset-lg-1">
-            <div style="display: flex;justify-content: space-between;align-items: center;">
-                <div style="display: flex;flex-direction: column;align-items: center;">
-                    <p>{{match.HomeTeam}}</p>
-                    <img [src]="imgUrl+match.HomeTeam+'.svg'" [attr.width]="'50px'" [attr.height]="'50px'" alt="">
+    <div class="container" style="margin-top: 20px;">
+        <div class="row">
+            <div @myInsertRemoveTrigger *ngFor="let match of matches;let i=index;" id="viewmatch" class="card col-lg-4 col-md-6 col-sm-12 col-xs-12 offset-lg-1">
+                <div style="display: flex;justify-content: space-between;align-items: center;">
+                    <div style="display: flex;flex-direction: column;align-items: center;">
+                        <p>{{match.HomeTeam}}</p>
+                        <img [src]="imgUrl+match.HomeTeam+'.svg'" [attr.width]="'50px'" [attr.height]="'50px'" alt="">
+                    </div>
+                    <div style="display: flex;flex-direction: column;align-items: center;">
+                        <p>{{match.AwayTeam}}</p>
+                        <img [src]="imgUrl+match.AwayTeam+'.svg'" [attr.width]="'50px'" [attr.height]="'50px'" alt="">
+                    </div>
                 </div>
-                <div style="display: flex;flex-direction: column;align-items: center;">
-                    <p>{{match.AwayTeam}}</p>
-                    <img [src]="imgUrl+match.AwayTeam+'.svg'" [attr.width]="'50px'" [attr.height]="'50px'" alt="">
+                <p style="text-align:center">{{match.StadiumName}}</p>
+                <p style="text-align:center">{{match.MainReferee}}</p>
+                <div style="display: flex;justify-content: space-between;align-items: center;">
+                    <p style="font-weight: 400;">{{match.LinesMan1}}</p>
+                    <p style="font-weight: 400;">{{match.LinesMan2}}</p>
                 </div>
+                <div style="display: flex;justify-content: space-between;align-items: center;">
+                    <p style="font-weight: 400;">{{match.MatchDate | date:'yyyy-MM-dd'}}</p>
+                    <p style="font-weight: 400;">{{match.MatchDate | date:'hh:mm a'}}</p>
+                </div>
+                <div style="display: flex;justify-content: space-between;align-items: center;">
+                <a id ="seats" style="color: cornflowerblue;text-decoration: underline;">Vacant Seats</a>
+                <a id="edit" style="color: cornflowerblue;text-decoration: underline;" (click)="editMatch(i)">Edit</a>
             </div>
-            <p style="text-align:center">{{match.Venue}}</p>
-            <p style="text-align:center">{{match.MainReferee}}</p>
-            <div style="display: flex;justify-content: space-between;align-items: center;">
-                <p style="font-weight: 400;">{{match.FirstLinseman}}</p>
-                <p style="font-weight: 400;">{{match.SecondLinseman}}</p>
-            </div>
-            <div style="display: flex;justify-content: space-between;align-items: center;">
-                <p style="font-weight: 400;">{{match.Date}}</p>
-                <p style="font-weight: 400;">{{match.Time}}</p>
-            </div>
-            <a href="" style="text-align: end;color: cornflowerblue;text-decoration: underline;">Edit</a>
-            <!-- <p style="text-align:center">{{match.MainReferee}}</p> -->
+                <!-- <p style="text-align:center">{{match.MainReferee}}</p> -->
         </div>
     </div>
 </div>
-</div>
+<br>
+<br>
+<!-- <script>
+    $('#edit').click(function (event) {
+      alert($(this).index());
+    });
+</script> -->

@@ -9,6 +9,7 @@ import {SigninComponent} from '../app/security/signin/signin.component'
 import {ManagerHomeComponent} from '../app/EFA-Manager/manager-home/manager-home.component'
 import {CreateMatchComponent} from '../app/EFA-Manager/create-match/create-match.component'
 import {ViewMatchComponent} from '../app/shared/view-match/view-match.component'
+import {EditMatchComponent} from '../app/EFA-Manager/edit-match/edit-match.component'
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path:'managerhome',component:ManagerHomeComponent},
   {path:'managerhome/creatematch',component:CreateMatchComponent},
   {path:'viewmatches',component:ViewMatchComponent},
+  {path:'managerhome/editmatch',component:EditMatchComponent},
   {path:'adm',component:AdmComponent},
   {path:'adm/getRequests',component:PendingRequestsComponent},
   {path:'adm/getUsers',component:ViewUsersComponent}

@@ -18,6 +18,7 @@ import {AuthService} from '../app/security/services/auth.service';
 import { ManagerHomeComponent } from './EFA-Manager/manager-home/manager-home.component';
 import { CreateMatchComponent } from './EFA-Manager/create-match/create-match.component';
 import { ViewMatchComponent } from './shared/view-match/view-match.component';
+import { EditMatchComponent } from './EFA-Manager/edit-match/edit-match.component';
 import { PendingRequestsComponent } from './pending-requests/pending-requests.component';
 import { ViewUsersComponent } from './view-users/view-users.component';
 
@@ -34,6 +35,7 @@ import { ViewUsersComponent } from './view-users/view-users.component';
     ManagerHomeComponent,
     CreateMatchComponent,
     ViewMatchComponent,
+    EditMatchComponent,
     PendingRequestsComponent,
     ViewUsersComponent,
   ],

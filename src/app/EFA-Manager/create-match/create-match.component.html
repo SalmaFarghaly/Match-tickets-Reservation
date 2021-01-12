@@ -54,21 +54,21 @@
 
         <label>
             Date <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
-            <input class="data required" type="date" formControlName="date">
+            <input class="data required" type="datetime-local" formControlName="date">
         </label>
 
         <div *ngIf="date && date.invalid && (date.dirty || date.touched)" class="alert alert-danger">
             <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:date}"></ng-container>
         </div>
 
-        <label>
+        <!-- <label>
             time <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
             <input class="time required" type="time" formControlName="time">
         </label>
 
         <div *ngIf="time && time.invalid && (time.dirty || time.touched)" class="alert alert-danger">
             <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:time}"></ng-container>
-        </div>
+        </div> -->
 
         
         <label>
