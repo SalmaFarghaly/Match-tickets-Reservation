@@ -9,6 +9,9 @@
     height: 100vh;
     overflow: auto;
     width: 100%;
+    overflow: hidden;
+    top:0;
+    position: relative;
 }
     .card {
         box-shadow: 0 4px 8px 0 rgba(245, 244, 244, 0.2);

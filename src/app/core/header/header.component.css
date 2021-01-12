@@ -1,0 +1,60 @@
+.navbar {
+    width: 100%;
+    background-color: rgb(0, 0, 0);
+    overflow: auto;
+  }
+  
+  .navbar a {
+    float: left;
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .navbar a:hover {
+    background-color: rgb(68, 64, 64);
+  }
+  
+  .active {
+    background-color: rgb(124, 25, 25);
+  }
+  
+  @media screen and (max-width: 500px) {
+    .navbar a {
+      float: none;
+      display: block;
+    }
+  }
+  .carousel-inner{overflow:visible} 
+  
+  .logo-image {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;    
+    position: relative;
+    margin-top: -6px;
+    
+}
+.image img{
+    max-width: 100%;
+    max-height: 100%;
+    background: url('download.png') ;
+    background-repeat: no-repeat;
+}
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  
+  .sticky + .content {
+    padding-top: 60px;
+  }
+  h1{
+    color: white; 
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    font-size:x-large;
+    padding-right: 50%;
+    display: block;
+  }

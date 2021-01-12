@@ -9,6 +9,8 @@ import { SigninComponent } from './security/signin/signin.component';
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AdmComponent } from './adm/adm.component';
 import {MatSelectModule} from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http'
@@ -17,6 +19,8 @@ import { ManagerHomeComponent } from './EFA-Manager/manager-home/manager-home.co
 import { CreateMatchComponent } from './EFA-Manager/create-match/create-match.component';
 import { ViewMatchComponent } from './shared/view-match/view-match.component';
 import { EditMatchComponent } from './EFA-Manager/edit-match/edit-match.component';
+import { PendingRequestsComponent } from './pending-requests/pending-requests.component';
+import { ViewUsersComponent } from './view-users/view-users.component';
 
 
 @NgModule({
@@ -27,16 +31,20 @@ import { EditMatchComponent } from './EFA-Manager/edit-match/edit-match.componen
     SigninComponent,
     HeaderComponent,
     FooterComponent,
+    AdmComponent,
     ManagerHomeComponent,
     CreateMatchComponent,
     ViewMatchComponent,
     EditMatchComponent,
+    PendingRequestsComponent,
+    ViewUsersComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     MatRadioModule,
+    NgbModule,
     MatSelectModule,
     BrowserAnimationsModule,
     HttpClientModule

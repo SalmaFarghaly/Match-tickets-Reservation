@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from '../app/home/home.component'
+import { AdmComponent } from '../app/adm/adm.component'
+import { PendingRequestsComponent } from '../app/pending-requests/pending-requests.component'
+import { ViewUsersComponent } from '../app/view-users/view-users.component'
 import {SignupComponent} from '../app/security/signup/signup.component'
 import {SigninComponent} from '../app/security/signin/signin.component'
 import {ManagerHomeComponent} from '../app/EFA-Manager/manager-home/manager-home.component'
@@ -15,7 +18,10 @@ const routes: Routes = [
   {path:'managerhome',component:ManagerHomeComponent},
   {path:'managerhome/creatematch',component:CreateMatchComponent},
   {path:'viewmatches',component:ViewMatchComponent},
-  {path:'managerhome/editmatch',component:EditMatchComponent}
+  {path:'managerhome/editmatch',component:EditMatchComponent},
+  {path:'adm',component:AdmComponent},
+  {path:'adm/getRequests',component:PendingRequestsComponent},
+  {path:'adm/getUsers',component:ViewUsersComponent}
 ];
 
 @NgModule({

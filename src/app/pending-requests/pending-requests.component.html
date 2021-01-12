@@ -1,0 +1,31 @@
+<div class="container">
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+        <th>Username</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let request of requests">      
+            <td><span *ngIf="(request.status == 'pending')">{{request.name}}</span></td>
+            <td><span *ngIf="(request.status == 'pending')">{{request.firstName}}</span></td>
+            <td><span *ngIf="(request.status == 'pending')">{{request.lastName}}</span></td>
+            <td><span *ngIf="(request.status == 'pending')">{{request.email}}</span></td>
+            <td><span *ngIf="(request.status == 'pending')">{{request.status}}</span></td>
+            <td>
+                <span *ngIf="(request.status == 'pending')">
+                    <button class="btn btn-sm btn-warning" (click)= onApprove(request)>
+                    <i class="fa fa-check"></i>Approve</button>
+                    <button class="btn btn-sm btn-danger" (click) = onDelete(request)>
+                    <i class="fa fa-remove"></i>Decline</button>
+                </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
