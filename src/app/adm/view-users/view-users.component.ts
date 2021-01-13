@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-
-// @Injectable({
-//   providedIn: 'root'
-// })
+import {HttpClient} from '@angular/common/http'
 
 export class User{
   constructor(
@@ -26,33 +21,37 @@ export class User{
   styleUrls: ['./view-users.component.css']
 })
 export class ViewUsersComponent implements OnInit {
+
   users!: User[];
   private deleteID: string = "";
   private user_server = 'http://localhost:3000/posts';
   constructor(private http : HttpClient) {}
 
+
   ngOnInit(): void {
-    this.getUsers();
-  }
-  getUsers(){
-    this.http.get<any>(this.user_server).subscribe(
-      response => {
-        console.log(response);
-        this.users = response;
-      }
-    );
-    
-  }
-  onDelete(user : User){
-    this.deleteID = user.id ;
-    console.log(this.deleteID);
-    if (confirm("Are you sure you want to delete?")){
-      const deleteURL = 'http://localhost:3000/posts/' + this.deleteID;
-      this.http.delete(deleteURL)
-      .subscribe((results) => {
-        this.ngOnInit();
-        });
+      this.getUsers();
     }
 
-  }
+    getUsers(){
+      this.http.get<any>(this.user_server).subscribe(
+        response => {
+          console.log(response);
+          this.users = response;
+        }
+      );
+      
+    }
+    onDelete(user : User){
+      this.deleteID = user.id ;
+      console.log(this.deleteID);
+      if (confirm("Are you sure you want to delete?")){
+        const deleteURL = 'http://localhost:3000/posts/' + this.deleteID;
+        this.http.delete(deleteURL)
+        .subscribe((results) => {
+          this.ngOnInit();
+          });
+      }
+  
+    }
+
 }

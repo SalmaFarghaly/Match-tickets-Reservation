@@ -13,15 +13,21 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdmComponent } from './adm/adm.component';
 import {MatSelectModule} from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http'
 import {AuthService} from '../app/security/services/auth.service';
 import { ManagerHomeComponent } from './EFA-Manager/manager-home/manager-home.component';
 import { CreateMatchComponent } from './EFA-Manager/create-match/create-match.component';
 import { ViewMatchComponent } from './shared/view-match/view-match.component';
 import { EditMatchComponent } from './EFA-Manager/edit-match/edit-match.component';
-import { PendingRequestsComponent } from './pending-requests/pending-requests.component';
-import { ViewUsersComponent } from './view-users/view-users.component';
-
+import { PendingRequestsComponent } from './adm/pending-requests/pending-requests.component';
+import { ViewUsersComponent } from './adm/view-users/view-users.component';
+import { EditProfileComponent } from './fan/edit-profile/edit-profile.component';
+import {AuthGuard} from './guards/auth.guard'
+import {AdminGuard} from './guards/admin.guard'
+import {EFAGuard} from './guards/efa.guard'
+import{FanGuard} from './guards/fan.guard'
+import {TokenInterceptorService} from '../app/security/services/token-interceptor.service';
+import { ProfileComponent } from './shared/profile/profile.component'
 
 @NgModule({
   declarations: [
@@ -38,6 +44,8 @@ import { ViewUsersComponent } from './view-users/view-users.component';
     EditMatchComponent,
     PendingRequestsComponent,
     ViewUsersComponent,
+    EditProfileComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +58,16 @@ import { ViewUsersComponent } from './view-users/view-users.component';
     HttpClientModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuard,
+    AdminGuard,
+    EFAGuard,
+    FanGuard,
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:TokenInterceptorService,
+      multi:true
+    }
   ],
   bootstrap: [AppComponent]
 })

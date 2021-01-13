@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormControl,FormGroup,Validators,FormBuilder } from '@angular/forms';
 import {AuthService} from '../services/auth.service'
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-signin',
@@ -10,7 +11,7 @@ import {AuthService} from '../services/auth.service'
 export class SigninComponent implements OnInit {
 
   userData={}
-  constructor(private fb: FormBuilder,private _auth:AuthService) { }
+  constructor(private fb: FormBuilder,private _auth:AuthService,private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -29,12 +30,28 @@ export class SigninComponent implements OnInit {
   onFormSubmit(){
     console.log("Valid Sign In data")
     this.userData={
-      'userName':this.userName?.value,
-      'password':this.password?.value
+      'name':this.userName.value,
+      'password':this.password.value
     }
     this._auth.loginUser(this.userData).subscribe(
-      res=>console.log(res),
-      err=>console.log(err)
+      res=>{
+        console.log(res)
+        localStorage.setItem('token',res.token);
+        localStorage.setItem('type',res.type);
+        if(res.type=="manager"){
+          this.router.navigate(['/managerhome'])
+          
+        }
+        else if(res.type=="administrator"){
+          this.router.navigate(['/adm'])
+        }
+      },
+      err=>{
+        console.log(err)
+        if(err){
+          alert(err.error.message);
+        }
+      }
     )
 
   }

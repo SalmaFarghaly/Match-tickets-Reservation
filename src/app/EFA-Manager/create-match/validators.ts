@@ -8,6 +8,8 @@ export function differentTeams(control:AbstractControl) {
 //   let confirmPass = group.get('cnfPassword')
   const awayTeam=control.get('awayTeam')?.value;
   const homeTeam=control.get('homeTeam')?.value;
+  console.log(awayTeam)
+  console.log(homeTeam)
 
   if(awayTeam&&homeTeam&&awayTeam!==''&&homeTeam!==''){
 
@@ -25,6 +27,9 @@ export function differentMen(control:AbstractControl) {
   const mainReferee=control.get('mainReferee')?.value;
   const linseman1=control.get('linseman1')?.value;
   const linseman2=control.get('linseman2')?.value;
+  console.log(mainReferee)
+  console.log(linseman1)
+  console.log(linseman2)
 
     if(mainReferee&&linseman1&&linseman1!==''&&mainReferee!==''){
 
@@ -48,6 +53,8 @@ export function differentlinsemen(control:AbstractControl) {
 
   const linseman1=control.get('linseman1')?.value;
   const linseman2=control.get('linseman2')?.value;
+  console.log(linseman1)
+  console.log(linseman2)
 
   if(linseman1&&linseman2&&linseman2!==''&&linseman1!==''){
     if(linseman2===linseman1){

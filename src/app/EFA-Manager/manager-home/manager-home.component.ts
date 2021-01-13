@@ -8,12 +8,18 @@ import {Router} from "@angular/router"
 })
 export class ManagerHomeComponent implements OnInit {
 
+  loaded=false;
+
   constructor(private router:Router) { }
 
   ngOnInit(): void {
+    this.loaded=true;
   }
   createMatch(){
     this.router.navigate(['/managerhome/creatematch']);
+  }
+  viewMatches(){
+    this.router.navigate(['viewmatches']);
   }
 
 }

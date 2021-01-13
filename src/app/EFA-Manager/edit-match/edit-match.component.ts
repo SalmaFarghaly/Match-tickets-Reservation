@@ -48,25 +48,25 @@ export class EditMatchComponent implements OnInit {
   }
 
   editMatchForm=new FormGroup({
-    homeTeam:new FormControl(null,[
+    homeTeam:new FormControl(localStorage.getItem('HomeTeam'),[
       // Validators.required,
     ]),
-    awayTeam:new FormControl(null,[
+    awayTeam:new FormControl(localStorage.getItem('AwayTeam'),[
       // Validators.required,
     ]),
-    matchVenue:new FormControl(null,[
+    matchVenue:new FormControl(localStorage.getItem('Venue'),[
       // Validators.required,
     ]),
-    mainReferee:new FormControl(null,[
+    mainReferee:new FormControl(localStorage.getItem('MainReferee'),[
       // Validators.required,
     ]),
     date:new FormControl(null,[
       // Validators.required,
     ]),
-    linseman1:new FormControl(null,[
+    linseman1:new FormControl(localStorage.getItem('Linesman1'),[
       // Validators.required,
     ]),
-    linseman2:new FormControl(null,[
+    linseman2:new FormControl(localStorage.getItem('LinesMan2'),[
       // Validators.required,
     ])
    

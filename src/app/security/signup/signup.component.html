@@ -37,6 +37,9 @@
         </label>
         <div *ngIf="email && email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
             <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:email}"></ng-container>
+            <div *ngIf="email.errors && !email.errors.required && email.errors.pattern">
+                This field must be written in an email form.
+            </div>
         </div>
 
         <label>

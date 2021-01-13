@@ -3,6 +3,7 @@ import {details} from '../teams'
 import { FormControl,FormGroup,Validators,FormBuilder } from '@angular/forms';
 import { differentTeams,differentMen,differentlinsemen } from './validators'
 import {MatchService} from '../../shared/view-match/services/matches/match.service'
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-create-match',
@@ -16,7 +17,7 @@ export class CreateMatchComponent implements OnInit {
   // logos=details.logos;
   referees=details.referees
   matchData={};
-  constructor(private fb: FormBuilder,private _mauth:MatchService) { }
+  constructor(private fb: FormBuilder,private _mauth:MatchService,private router:Router) { }
 
     // you should be taking it from the backend
   venues=[
@@ -90,29 +91,11 @@ export class CreateMatchComponent implements OnInit {
         console.log(res.message)
         if(res.message=="OK"){
           alert("The match has been create successfully");
+          this.router.navigate(['/viewmatches'])
         }
       },
       err=>console.log(err)
     )
-   // We have already made sure that data is valid , now we can send it to
-   // the backend.
-  //  this.registerUserData={
-  //    'userName':this.userName?.value,
-  //    'firstName':this.firstName?.value,
-  //    'lastName':this.lastName?.value,
-  //    'email':this.email?.value,
-  //    'password':this.password?.value,
-  //    'city':this.city?.value,
-  //    'birthDate':this.birthDate?.value,
-  //    'role':this.role?.value,
-  //    'gender':this.gender?.value,
-  //    'address':this.address?.value
-
-  //  }
-  //   this._auth.registerUser(this.registerUserData).subscribe(
-  //     res=>console.log(res),
-  //     err=>console.log(err)
-  //   )
 
    
  }

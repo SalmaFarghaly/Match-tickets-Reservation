@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatchService} from '../view-match/services/matches/match.service'
 import {Router} from '@angular/router'
+import{AuthService} from '../../security/services/auth.service'
 import * as $ from 'jquery' 
 import {
   trigger,
@@ -22,8 +23,8 @@ import {
       state('hide',style({
         opacity:0
       })),
-      transition("show=>hide",animate('1000ms ease-out')),
-      transition('hide=>show',animate('1000ms ease-in'))
+      transition("show=>hide",animate('200ms ease-out')),
+      transition('hide=>show',animate('200ms ease-in'))
 
     ]),
     trigger('flyInOut', [
@@ -51,54 +52,14 @@ import {
 })
 export class ViewMatchComponent implements OnInit {
 
-  constructor(private _mauth:MatchService,private router:Router) { }
+  constructor(private _mauth:MatchService,private router:Router,private _auth:AuthService) { }
 
+  type;
   show=true;
   isShown=true;
   matches;
   imgUrl="../../../assets/teams-logo/";
-//   matches=[
-//     {
-//     "HomeTeam":"AL AHLY",
-//     "AwayTeam":"ENNPI",
-//     "Date":"01/11/2020",
-//     "Time":"5:10 PM",
-//     "Venue":"Cairo",
-//     "MainReferee":"Mohammed youssef",
-//     "FirstLinseman":"Mohammed youssef",
-//     "SecondLinseman":"Mohammed youssef"
-//   },
-//     {
-//     "HomeTeam":"AL AHLY",
-//     "AwayTeam":"ENNPI",
-//     "Date":"01/11/2020",
-//     "Time":"5:10 PM",
-//     "Venue":"Cairo",
-//     "MainReferee":"Mohammed youssef",
-//     "FirstLinseman":"Mohammed youssef",
-//     "SecondLinseman":"Mohammed youssef"
-//   },
-//     {
-//     "HomeTeam":"AL AHLY",
-//     "AwayTeam":"ENNPI",
-//     "Date":"01/11/2020",
-//     "Time":"5:10 PM",
-//     "Venue":"Cairo",
-//     "MainReferee":"Mohammed youssef",
-//     "FirstLinseman":"Mohammed youssef",
-//     "SecondLinseman":"Mohammed youssef"
-//   },
-//     {
-//     "HomeTeam":"AL AHLY",
-//     "AwayTeam":"ENNPI",
-//     "Date":"01/11/2020",
-//     "Time":"5:10 PM",
-//     "Venue":"Cairo",
-//     "MainReferee":"Mohammed youssef",
-//     "FirstLinseman":"Mohammed youssef",
-//     "SecondLinseman":"Mohammed youssef"
-//   }
-// ]
+
 
 
   ngOnInit(): void {
@@ -106,16 +67,9 @@ export class ViewMatchComponent implements OnInit {
       res=>{console.log(res.match);this.matches=res.match;console.log(this.matches)},
       err=>console.log(err)
     )
+    this.type=this._auth.userType()
   }
-  // ngAfterViewInit(){
-  //   // console.log("WWEEEEEEEEEEEEEEEEEEEEEE")
-  // //   $(document).ready(function(){
-  // //   $('#edit').click(function (event) {
-  // //     alert($(this).index());
-  // //   });
-  // // })
-  // // console.log("WWEEEEEEEEEEEEEEEEEEEEEE")
-  // }
+
   get stateName(){
     return this.show?'show':'hide'
   }
@@ -129,7 +83,6 @@ export class ViewMatchComponent implements OnInit {
     localStorage.setItem('HomeTeam',match.HomeTeam);
     localStorage.setItem('AwayTeam',match.AwayTeam);
     localStorage.setItem('Date',match.MatchDate);
-    // localStorage.setItem('Time',match.MatchTime);
     localStorage.setItem('Venue',match.StadiumName);
     localStorage.setItem('Linesman1',match.LinesMan1);
     localStorage.setItem('LinesMan2',match.LinesMan2);
@@ -137,16 +90,9 @@ export class ViewMatchComponent implements OnInit {
     localStorage.setItem('id',match.MatchID);
     this.router.navigate(['/managerhome/editmatch'])
 
-    // session_start();
-    // console.log("INDEXXXXXXXXXXXXXXXXXXXXXXXXX")
-    // console.log(event)
+
 
   }
-  // editMatch($this){
-  //   console.log($this)
-  //   // get which card has been clicked and store it's data in a session 
-  //   // for the next page.
-  //   this.router.navigate(['/managerhome/editmatch'])
-  // }
+
 
 }

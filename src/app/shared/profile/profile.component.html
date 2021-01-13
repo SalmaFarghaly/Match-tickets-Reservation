@@ -1,0 +1,93 @@
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css">
+<div class="container">
+<div class="row">
+    
+<div id="sign-up-form" class="col-lg-6 col-md-8 col-sm-12 col-xs-12" >
+    <h1>Personal Info</h1>
+    <br>
+    <form [formGroup]="editForm" (ngSubmit)="onFormSubmit()">
+    
+    
+        <label>
+        First Name <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
+        <input class="data required" placeholder="Enter your first name" type="text" [(ngModel)]="userData.firstName" formControlName="firstName">
+        </label>
+        <div *ngIf=" firstName && firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
+            <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:firstName}"></ng-container>
+        </div>
+
+
+        <label>
+        Last Name <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
+        <input class="data required" placeholder="Enter your last name" type="text" [(ngModel)]="userData.lastName" formControlName="lastName">
+        </label>
+        <div *ngIf="lastName && lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger">
+            <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:lastName}"></ng-container>
+        </div>
+
+
+        <label>
+        Password <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
+        <input class="data required" placeholder="Enter your password" type="password" formControlName="password">
+        </label>
+      
+
+        <div *ngIf="password && password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+            <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:password}"></ng-container>
+            <div *ngIf="password.errors && !password.errors.required && password.errors.NotMatch">
+                Your password should be at least eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.
+            </div>
+        </div>
+
+
+        <label>
+            Birth Date <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
+            <input class="data required" type="date" formControlName="birthDate" [ngModel]="userData.birthDate| date:'yyyy-MM-dd'">
+        </label>
+
+        <div *ngIf="birthDate && birthDate.invalid && (birthDate.dirty || birthDate.touched)" class="alert alert-danger">
+            <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:birthDate}"></ng-container>
+        </div>
+
+
+
+        <label>
+            city <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
+            <select formControlName="city" class="form-control">
+                <option *ngFor="let city of cities" [selected]="city==userData.city">{{city}}</option>
+            </select>
+        </label>
+
+        <div *ngIf="city && city.invalid && (city.dirty || city.touched)" class="alert alert-danger">
+            <ng-container [ngTemplateOutlet]="requiredErr" [ngTemplateOutletContext]="{item:city}"></ng-container>
+        </div>
+
+
+
+        <label>
+            Address 
+            <input class="data" type="text" formControlName="address">
+        </label>
+        <br>
+        <input style="position: absolute; right: 0;"  [ngClass]="{'core-btn':editForm.valid,'disabled-btn':!editForm.valid}" id="submit-btn" type="submit" value="Save Changes" [disabled]="!editForm.valid">
+        <br>
+        <br>    
+        <br>
+        <br>
+    </form>
+</div>
+</div>
+</div>
+
+
+<ng-template #requiredErr let-item='item'>
+        <div *ngIf="item.errors.required">
+            {{msgErr}}
+        </div>
+</ng-template>
+
+<ng-template #requiredMark>
+    <span style="color: red;">*</span>
+</ng-template>

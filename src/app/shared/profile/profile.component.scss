@@ -1,0 +1,41 @@
+@import "core-styles";
+
+  
+  #sign-up-form{
+    margin-top: 20px;
+    // width:50%;
+    margin: auto;
+    position: relative;
+    top: 100px;
+    bottom: 100px;
+    // height: 80%;
+    input.data{
+        border-radius: 0px 10px 10px 0px;
+    }
+    input.required.ng-invalid.ng-touched {
+      border-left: 5px solid red;
+    }
+    input.required.ng-valid.ng-touched{
+      border-left: 5px solid green;
+    }
+    .radio-btn{
+      margin-left: 15px;
+      margin-right: 5px;
+    }
+    #submit-btn{
+      cursor: pointer;
+      
+      
+    }
+    label{
+      font-size: 16px;
+      font-weight: 550;
+    }
+    .alert{
+      color: red;
+    }
+    input[type="submit"]{
+      outline:none;
+    }
+    
+  }
