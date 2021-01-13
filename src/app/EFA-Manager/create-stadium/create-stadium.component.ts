@@ -8,6 +8,10 @@ import { AuthService } from 'src/app/security/services/auth.service';
   styleUrls: ['./create-stadium.component.css']
 })
 export class CreateStadiumComponent implements OnInit {
+
+  // today = new Date().toISOString();
+// console.log(today)
+// document.getElementById("daTi").min = '2019-02-17T10:38';
   
   selectedSeats;
   selectedRows;

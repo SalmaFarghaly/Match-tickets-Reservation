@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModalConfig, ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
+import {AuthService} from '../security/services/auth.service'
 
 @Component({
   selector: 'app-stadium',
@@ -10,13 +11,19 @@ import { HttpClient } from '@angular/common/http';
 })
 export class StadiumComponent implements OnInit {
 
-  constructor(private modalService: NgbModal, private http : HttpClient) { }
+  constructor(private modalService: NgbModal, private http : HttpClient,private _auth:AuthService) { }
+
+  pinnumber:number;
+  creditnumber:number;
+  isLogged;
   closeResult : string;
   openModal : boolean = false;
   ngOnInit(): void {
+    this.isLogged=this._auth.loggedIn();
+    this.stadiumName=localStorage.getItem('Venue')+" Stadium";
   }
   //variable declarations
-  stadiumName:string = "Cairo International Stadium";
+  stadiumName:string = "";
 
 
   rows: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
@@ -88,7 +95,12 @@ export class StadiumComponent implements OnInit {
     }
   }
 
-  submitForm(creditnumber,pinnumber){
+  submitForm(){
+    let matchid=localStorage.getItem('id')
+    this.pinnumber
+    this.creditnumber
+    this.selected
+    //array of tickets 
     //send creditnumber, pinnumber, selected array, matchid
   }
 

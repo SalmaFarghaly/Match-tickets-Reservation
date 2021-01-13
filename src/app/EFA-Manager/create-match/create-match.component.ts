@@ -4,6 +4,7 @@ import { FormControl,FormGroup,Validators,FormBuilder } from '@angular/forms';
 import { differentTeams,differentMen,differentlinsemen } from './validators'
 import {MatchService} from '../../shared/view-match/services/matches/match.service'
 import {Router} from '@angular/router'
+import * as moment from 'moment'
 
 @Component({
   selector: 'app-create-match',
@@ -13,10 +14,13 @@ import {Router} from '@angular/router'
 export class CreateMatchComponent implements OnInit {
   
 
+  // today = new Date().toISOString();
+  minDate = moment(new Date()).format('yyyy-MM-ddTHH:mm')
   teamsName=details.teams;
   // logos=details.logos;
   referees=details.referees
   matchData={};
+  start = Date.now();
   constructor(private fb: FormBuilder,private _mauth:MatchService,private router:Router) { }
 
     // you should be taking it from the backend

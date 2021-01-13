@@ -54,7 +54,7 @@
 
         <label>
             Date <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
-            <input class="data required" type="datetime-local" formControlName="date">
+            <input class="data required" type="datetime-local" formControlName="date" [min]=" minDate">
         </label>
 
         <div *ngIf="date && date.invalid && (date.dirty || date.touched)" class="alert alert-danger">
@@ -148,6 +148,8 @@
 </div>
 </div>
 </div>
+
+
 
 <ng-template #requiredErr let-item='item'>
         <div *ngIf="item.errors.required">

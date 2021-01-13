@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http'
 
 export class User{
   constructor(
-    public id: string,
+    public _id: string,
     public name : string,
     public firstName : string,
     public lastName : string,
@@ -24,7 +24,7 @@ export class ViewUsersComponent implements OnInit {
 
   users!: User[];
   private deleteID: string = "";
-  private user_server = 'http://localhost:3000/getUsers';
+  private user_server = 'http://localhost:3000/adm/getUsers';
   constructor(private http : HttpClient) {}
 
 
@@ -41,24 +41,8 @@ export class ViewUsersComponent implements OnInit {
       );
       
     }
-    onDelete(user : User){
-      this.deleteID = user.id ;
-      console.log(this.deleteID);
-      if (confirm("Are you sure you want to delete?")){
-        const deleteURL = 'http://localhost:3000/posts/' + this.deleteID;
-        this.http.delete(deleteURL)
-        .subscribe((results) => {
-          this.ngOnInit();
-          });
-      }
-<<<<<<< HEAD:src/app/adm/view-users/view-users.component.ts
-  
-=======
-    );
-    
-  }
   onDelete(user : User){
-    this.deleteID = user.id ;
+    this.deleteID = user._id ;
     console.log(this.deleteID);
     if (confirm("Are you sure you want to delete?")){
       const deleteURL = 'http://localhost:3000/adm/remove/' + this.deleteID;
@@ -66,7 +50,7 @@ export class ViewUsersComponent implements OnInit {
       .subscribe((results) => {
         this.ngOnInit();
         });
->>>>>>> 12cd52500489b97bfb46cb53fd99014c08c22ed2:src/app/view-users/view-users.component.ts
     }
 
+}
 }

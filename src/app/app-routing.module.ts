@@ -39,7 +39,7 @@ const routes: Routes = [
   {path:'adm/getUsers',component:ViewUsersComponent,
   canActivate:[AuthGuard]},
   {path:'profile',component:ProfileComponent},
-  {path:'createStadium',component:CreateStadiumComponent,
+  {path:'managerhome/createStadium',component:CreateStadiumComponent,
   canActivate:[AuthGuard,EFAGuard]},
   {path:'createStadium/stadium',component:StadiumComponent}
 ];

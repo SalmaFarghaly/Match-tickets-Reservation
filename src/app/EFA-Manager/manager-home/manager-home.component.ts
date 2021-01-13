@@ -22,4 +22,8 @@ export class ManagerHomeComponent implements OnInit {
     this.router.navigate(['viewmatches']);
   }
 
+  createStadium(){
+    this.router.navigate(['/managerhome/createStadium'])
+  }
+
 }

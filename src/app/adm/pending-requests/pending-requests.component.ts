@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class Request{
   constructor(
-    public id : string,
+    public _id : string,
     public name : string,
     public firstName : string,
     public lastName : string,
@@ -19,6 +19,7 @@ export class Request{
   styleUrls: ['./pending-requests.component.css']
 })
 export class PendingRequestsComponent implements OnInit {
+
   requests!: Request[];
   private deleteID: string = "";
   private request_server = 'http://localhost:3000/adm/getRequests';
@@ -33,6 +34,7 @@ export class PendingRequestsComponent implements OnInit {
       response => {
         console.log(response);
         this.requests = response;
+        console.log(this.requests);
       }
     );
     
@@ -40,7 +42,7 @@ export class PendingRequestsComponent implements OnInit {
   onApprove(request: Request){
     if (request.status == "pending"){
       request.status = "approved";
-      const editURL = 'http://localhost:3000/adm/approve/' + request.id;
+      const editURL = 'http://localhost:3000/adm/approve/' + request._id;
       this.http.post(editURL, {})
         .subscribe((results) => {
           this.ngOnInit();
@@ -52,7 +54,7 @@ export class PendingRequestsComponent implements OnInit {
     
   }
   onDecline(request: Request){
-    this.deleteID = request.id ;
+    this.deleteID = request._id ;
     console.log(this.deleteID);
     if (confirm("Are you sure you want to decline request? Remember that declining request will delete the user.")){
       const deleteURL = 'http://localhost:3000/adm/decline/' + this.deleteID;

@@ -32,6 +32,7 @@ import { StadiumComponent } from './stadium/stadium.component';
 import { CreateStadiumComponent } from './EFA-Manager/create-stadium/create-stadium.component';
 import { FormsModule } from '@angular/forms';
 import {NgbModalConfig, ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { ReservedSeatsComponent } from './fan/reserved-seats/reserved-seats.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import {NgbModalConfig, ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bo
     ProfileComponent,
     StadiumComponent,
     CreateStadiumComponent,
+    ReservedSeatsComponent,
   ],
   imports: [
     BrowserModule,

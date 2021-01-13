@@ -83,4 +83,8 @@ span{
 }
 button{
     font-size: 20px;
+    margin-left: 20px;
+    width: fit-content;
+    
+
 }

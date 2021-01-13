@@ -3,7 +3,7 @@ import { FormControl,FormGroup,Validators,FormBuilder } from '@angular/forms';
 import { passwordValidator,checkPasswords } from './valiadtors'
 import {AuthService} from '../services/auth.service'
 import {cities} from '../cities'
-
+import {Router} from  '@angular/router'
 
 
 @Component({
@@ -13,7 +13,7 @@ import {cities} from '../cities'
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private fb: FormBuilder,private _auth:AuthService) {
+  constructor(private fb: FormBuilder,private _auth:AuthService,private router:Router) {
 
    }
 
@@ -85,6 +85,8 @@ export class SignupComponent implements OnInit {
          if(res.message=="User created"){
          console.log(res)
          alert("You have signed up successfully")
+         this.router.navigate(['/signin'])
+         
          }
         },
        err=>{
