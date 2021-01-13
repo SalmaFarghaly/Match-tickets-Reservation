@@ -1,0 +1,88 @@
+<!-- Template for the seat component -->
+<!-- Author: Uzair Ahmed-->x
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+<ng-template #content let-modal>
+        <div class="modal-header">
+          <h1 style = "font-size: 25px; font-weight: bold;" class="modal-title" id="modal-basic-title">Checkout</h1>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div style = "font-size: 20px" class ="modal-body">
+                <label for="fname">Accepted Cards</label>
+                <div class="icon-container">
+                  <i class="fa fa-cc-visa" style="color:navy;"></i>
+                  <i class="fa fa-cc-amex" style="color:blue;"></i>
+                  <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                  <i class="fa fa-cc-discover" style="color:orange;"></i>
+                </div>
+          <form>
+            <div class="form-group">
+              <label for="creditnumber">Credit Card Number</label>
+              <div class="input-group">
+                <input style = "font-size: 16px" id="creditnumber" class="form-control" placeholder="1111-2222-3333-4444" >
+              </div>
+            </div>
+            <div class="form-group">
+                <label for="pinnumber">Pin Number</label>
+                <div class="input-group">
+                    <input style = "font-size: 16px" id="pinnumber" class="form-control" placeholder="1111">
+                </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click'); submitForm(creditnumber,pinnumber)">Checkout</button>
+        </div>
+      </ng-template>
+
+<section class="container" style = "width: 100%;">
+        <main class="innerContainer">
+            <div class="movie">
+                <h3 class="movieTitle">{{stadiumName}}</h3>
+                
+            </div>
+    
+            <!-- Showing a static legend bar -->
+            <div style = "display: inline-block" class ="legend">
+                <span class="glyphicon glyphicon-stop freeSeat"></span> FREE
+                <span class="glyphicon glyphicon-ban-circle reservedSeat padding-left"></span> TAKEN
+                <span class="glyphicon glyphicon-ok-sign selectedSeat padding-left"></span> SELECTED          
+            </div>
+
+      
+
+
+
+            <!-- Generate the seating grid -->
+            <table class="seatLayout">
+            <tr *ngFor="let row of rows">
+                <td class="seat" *ngFor="let col of cols" (click)="seatClicked(row + col)" 
+                        [ngSwitch]="getStatus(row + col)">
+                    <span  *ngSwitchCase="'selected'" class="glyphicon glyphicon-ok-sign selectedSeat"></span>
+                    <span *ngSwitchCase="'reserved'" class="glyphicon glyphicon-ban-circle reservedSeat"></span>
+                    <span *ngSwitchDefault class="glyphicon glyphicon-stop freeSeat"></span>
+                </td>
+            </tr>
+        </table>
+            <!-- Structural directive - only visible on selection -->
+            <div *ngIf="selected.length > 0" class="font14 marginTB10">
+                <div class="wordWrap">SEATS RESERVED : {{selected.length}}</div>
+                <div>PRICE : {{ticketPrice}} * {{selected.length}} = {{ticketPrice*selected.length}}.{{currency}} </div>
+            </div>
+    
+            <!-- Action buttons -->
+            <div class="buttonBar marginTop5">
+                <button (click)="clearSelected()" [disabled]="selected.length === 0" class="btn btn-default btn-sm">Clear</button>
+                <button (click)="open(content)" [disabled]="selected.length === 0" class="btn btn-success btn-sm" >Buy Tickets</button>
+            </div>        
+        </main>
+        <!-- <div *ngIf = "openModal">
+                <ng-container [ngTemplateOutlet]="content"></ng-container>
+        </div> -->
+</section >
+
+      

@@ -20,5 +20,5 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/'])
     this.isLoggedIn=this._auth.loggedIn();
   }
-
+ 
 }

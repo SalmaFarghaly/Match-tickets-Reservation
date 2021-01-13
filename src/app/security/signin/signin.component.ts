@@ -30,7 +30,11 @@ export class SigninComponent implements OnInit {
   onFormSubmit(){
     console.log("Valid Sign In data")
     this.userData={
+<<<<<<< HEAD
       'name':this.userName.value,
+=======
+      'userName':this.userName.value,
+>>>>>>> 12cd52500489b97bfb46cb53fd99014c08c22ed2
       'password':this.password.value
     }
     this._auth.loginUser(this.userData).subscribe(

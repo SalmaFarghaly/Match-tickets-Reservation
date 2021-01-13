@@ -24,7 +24,7 @@ export class ViewUsersComponent implements OnInit {
 
   users!: User[];
   private deleteID: string = "";
-  private user_server = 'http://localhost:3000/posts';
+  private user_server = 'http://localhost:3000/getUsers';
   constructor(private http : HttpClient) {}
 
 
@@ -51,7 +51,22 @@ export class ViewUsersComponent implements OnInit {
           this.ngOnInit();
           });
       }
+<<<<<<< HEAD:src/app/adm/view-users/view-users.component.ts
   
+=======
+    );
+    
+  }
+  onDelete(user : User){
+    this.deleteID = user.id ;
+    console.log(this.deleteID);
+    if (confirm("Are you sure you want to delete?")){
+      const deleteURL = 'http://localhost:3000/adm/remove/' + this.deleteID;
+      this.http.post(deleteURL,{})
+      .subscribe((results) => {
+        this.ngOnInit();
+        });
+>>>>>>> 12cd52500489b97bfb46cb53fd99014c08c22ed2:src/app/view-users/view-users.component.ts
     }
 
 }

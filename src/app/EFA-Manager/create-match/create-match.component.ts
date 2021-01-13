@@ -74,14 +74,14 @@ export class CreateMatchComponent implements OnInit {
    console.log(this.createMatchForm.controls)
    this.matchData={
 
-    "HomeTeam":this.homeTeam?.value,
-    "AwayTeam":this.awayTeam?.value,
-    "StadiumName":this.matchVenue?.value,
-    "MatchDate": this.date?.value,
+    "HomeTeam":this.homeTeam.value,
+    "AwayTeam":this.awayTeam.value,
+    "StadiumName":this.matchVenue.value,
+    "MatchDate": this.date.value,
     // "MatchTime":this.time?.value,
-    "MainReferee":this.mainReferee?.value,
-    "LinesMan1":this.linseman1?.value,
-    "LinesMan2":this.linseman2?.value
+    "MainReferee":this.mainReferee.value,
+    "LinesMan1":this.linseman1.value,
+    "LinesMan2":this.linseman2.value
     
     }
     // console.log("DATAAAAAA")

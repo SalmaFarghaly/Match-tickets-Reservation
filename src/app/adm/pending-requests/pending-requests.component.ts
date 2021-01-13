@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-
-// @Injectable({
-//   providedIn: 'root'
-// })
 
 export class Request{
   constructor(
@@ -26,7 +21,7 @@ export class Request{
 export class PendingRequestsComponent implements OnInit {
   requests!: Request[];
   private deleteID: string = "";
-  private request_server = 'http://localhost:3000/posts';
+  private request_server = 'http://localhost:3000/adm/getRequests';
   constructor(private http : HttpClient) {}
 
   ngOnInit(): void {
@@ -45,8 +40,8 @@ export class PendingRequestsComponent implements OnInit {
   onApprove(request: Request){
     if (request.status == "pending"){
       request.status = "approved";
-      const editURL = 'http://localhost:3000/posts/' + request.id;
-      this.http.post(editURL, request.status)
+      const editURL = 'http://localhost:3000/adm/approve/' + request.id;
+      this.http.post(editURL, {})
         .subscribe((results) => {
           this.ngOnInit();
         });
@@ -56,14 +51,14 @@ export class PendingRequestsComponent implements OnInit {
     }
     
   }
-  onDelete(request: Request){
+  onDecline(request: Request){
     this.deleteID = request.id ;
     console.log(this.deleteID);
     if (confirm("Are you sure you want to decline request? Remember that declining request will delete the user.")){
-      const deleteURL = 'http://localhost:3000/posts/' + this.deleteID;
-      this.http.delete(deleteURL)
-      .subscribe((results) => {
-        this.ngOnInit();
+      const deleteURL = 'http://localhost:3000/adm/decline/' + this.deleteID;
+      this.http.post(deleteURL,{})
+        .subscribe((results) => {
+          this.ngOnInit();
         });
     }
 

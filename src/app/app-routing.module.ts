@@ -18,6 +18,8 @@ import {EFAGuard} from '../app/guards/efa.guard'
 import {FanGuard} from '../app/guards/fan.guard'
 import {ProfileComponent} from '../app/shared/profile/profile.component'
 // import { AuthService } from './security/services/auth.service';
+import {StadiumComponent} from '../app/stadium/stadium.component'
+import {CreateStadiumComponent} from '../app/EFA-Manager/create-stadium/create-stadium.component'
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -36,8 +38,10 @@ const routes: Routes = [
   canActivate:[AuthGuard,AdminGuard]},
   {path:'adm/getUsers',component:ViewUsersComponent,
   canActivate:[AuthGuard]},
-  {path:'profile',component:ProfileComponent}
-
+  {path:'profile',component:ProfileComponent},
+  {path:'createStadium',component:CreateStadiumComponent,
+  canActivate:[AuthGuard,EFAGuard]},
+  {path:'createStadium/stadium',component:StadiumComponent}
 ];
 
 @NgModule({

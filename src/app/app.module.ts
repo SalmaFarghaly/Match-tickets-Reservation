@@ -28,6 +28,10 @@ import {EFAGuard} from './guards/efa.guard'
 import{FanGuard} from './guards/fan.guard'
 import {TokenInterceptorService} from '../app/security/services/token-interceptor.service';
 import { ProfileComponent } from './shared/profile/profile.component'
+import { StadiumComponent } from './stadium/stadium.component';
+import { CreateStadiumComponent } from './EFA-Manager/create-stadium/create-stadium.component';
+import { FormsModule } from '@angular/forms';
+import {NgbModalConfig, ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -46,6 +50,8 @@ import { ProfileComponent } from './shared/profile/profile.component'
     ViewUsersComponent,
     EditProfileComponent,
     ProfileComponent,
+    StadiumComponent,
+    CreateStadiumComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +61,8 @@ import { ProfileComponent } from './shared/profile/profile.component'
     NgbModule,
     MatSelectModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     AuthService,
