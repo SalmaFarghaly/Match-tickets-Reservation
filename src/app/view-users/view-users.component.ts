@@ -28,7 +28,7 @@ export class User{
 export class ViewUsersComponent implements OnInit {
   users!: User[];
   private deleteID: string = "";
-  private user_server = 'http://localhost:3000/posts';
+  private user_server = 'http://localhost:3000/getUsers';
   constructor(private http : HttpClient) {}
 
   ngOnInit(): void {
@@ -47,8 +47,8 @@ export class ViewUsersComponent implements OnInit {
     this.deleteID = user.id ;
     console.log(this.deleteID);
     if (confirm("Are you sure you want to delete?")){
-      const deleteURL = 'http://localhost:3000/posts/' + this.deleteID;
-      this.http.delete(deleteURL)
+      const deleteURL = 'http://localhost:3000/adm/remove/' + this.deleteID;
+      this.http.post(deleteURL,{})
       .subscribe((results) => {
         this.ngOnInit();
         });

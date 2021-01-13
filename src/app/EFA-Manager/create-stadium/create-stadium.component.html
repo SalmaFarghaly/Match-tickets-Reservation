@@ -1,0 +1,60 @@
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css">
+
+<div class="container">
+<div class="row">
+    
+<div id="sign-in-form" class="col-lg-6 col-md-8 col-sm-12 col-xs-12" >
+    <form [formGroup]="signInForm" (ngSubmit)="onFormSubmit()">
+        <label>
+            Enter stadium name: <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
+            <input class="data required" placeholder="Stadium name" type="text" formControlName="nameStadium">
+        </label>
+        
+        <label>
+                    Number of seats per row: <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
+                <div style = "width: 40%">
+                    <select class="data required" id="idSeats" formControlName = "nameSeats" [(ngModel)]="selectedSeats" (change)="selectedSeatsNumber()">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7"> 7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
+            </label>
+        
+       
+        <br>
+        <br>
+        <label>
+                Number of rows: <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
+                <div style = "width: 40%">
+                    <select class="data required" id="idRows" formControlName = "nameRows" [(ngModel)]="selectedRows" (change)="selectedRowsNumber()">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7"> 7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
+            </label>
+        <button type = "submit" routerLink = "stadium" class="btn btn-lg btn-secondary">
+                <i class="fa fa-submit"></i>Submit</button>
+
+        </form>
+        </div>
+    </div>
+</div>          
+
+

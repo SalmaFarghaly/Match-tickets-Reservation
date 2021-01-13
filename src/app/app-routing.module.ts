@@ -10,6 +10,8 @@ import {ManagerHomeComponent} from '../app/EFA-Manager/manager-home/manager-home
 import {CreateMatchComponent} from '../app/EFA-Manager/create-match/create-match.component'
 import {ViewMatchComponent} from '../app/shared/view-match/view-match.component'
 import {EditMatchComponent} from '../app/EFA-Manager/edit-match/edit-match.component'
+import {StadiumComponent} from '../app/stadium/stadium.component'
+import {CreateStadiumComponent} from '../app/EFA-Manager/create-stadium/create-stadium.component'
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -21,7 +23,9 @@ const routes: Routes = [
   {path:'managerhome/editmatch',component:EditMatchComponent},
   {path:'adm',component:AdmComponent},
   {path:'adm/getRequests',component:PendingRequestsComponent},
-  {path:'adm/getUsers',component:ViewUsersComponent}
+  {path:'adm/getUsers',component:ViewUsersComponent},
+  {path:'createStadium',component:CreateStadiumComponent},
+  {path:'createStadium/stadium',component:StadiumComponent}
 ];
 
 @NgModule({

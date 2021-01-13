@@ -21,8 +21,10 @@ import { ViewMatchComponent } from './shared/view-match/view-match.component';
 import { EditMatchComponent } from './EFA-Manager/edit-match/edit-match.component';
 import { PendingRequestsComponent } from './pending-requests/pending-requests.component';
 import { ViewUsersComponent } from './view-users/view-users.component';
-
-
+import { StadiumComponent } from './stadium/stadium.component';
+import { CreateStadiumComponent } from './EFA-Manager/create-stadium/create-stadium.component';
+import { FormsModule } from '@angular/forms';
+import {NgbModalConfig, ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +40,8 @@ import { ViewUsersComponent } from './view-users/view-users.component';
     EditMatchComponent,
     PendingRequestsComponent,
     ViewUsersComponent,
+    StadiumComponent,
+    CreateStadiumComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,8 @@ import { ViewUsersComponent } from './view-users/view-users.component';
     NgbModule,
     MatSelectModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     AuthService
