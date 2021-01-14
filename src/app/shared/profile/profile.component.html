@@ -2,14 +2,14 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css">
 <div class="container">
-<div class="row">
+<div class="row .blur-effect">
     
 <div id="sign-up-form" class="col-lg-6 col-md-8 col-sm-12 col-xs-12" >
-    <h1>Personal Info</h1>
-    <br>
-    <form [formGroup]="editForm" (ngSubmit)="onFormSubmit()">
+    <!-- [ngClass]="{'core-btn':signInForm.valid,'disabled-btn':!signInForm.valid}" -->
+    <form [formGroup]="editForm" (ngSubmit)="onFormSubmit()" [ngClass]="{'blur':appear}">
     
-    
+        <h1>Personal Info</h1>
+        <br>
         <label>
         First Name <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
         <input class="data required" placeholder="Enter your first name" type="text" [(ngModel)]="userData.firstName" formControlName="firstName">
@@ -77,6 +77,14 @@
         <br>
         <br>
     </form>
+    <div *ngIf="appear" id="dialog" title="Basic dialog">
+        <p style="margin-top: 20px;">Enter Your password</p>
+        <input type="password" placeholder="your password" style="width: 80%;border-radius: 5px;height: 30px;">
+        <br>
+        <input value="Submit" class="core-btn" style="width: 50%; cursor: pointer;" (click)="editUser()">
+        <br>
+    </div>
+        
 </div>
 </div>
 </div>

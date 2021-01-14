@@ -98,7 +98,11 @@ export class CreateMatchComponent implements OnInit {
           this.router.navigate(['/viewmatches'])
         }
       },
-      err=>console.log(err)
+      err=>{
+        if(err.error.msg=="Stadium already reserved"){
+          alert('This Staduim is reserved for another match at the same time')
+        }
+      }
     )
 
    

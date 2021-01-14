@@ -39,3 +39,33 @@
     }
     
   }
+
+  .blur{
+    opacity: 0.3;
+  }
+  div#dialog{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color:var(--pale-grey);
+    align-items: center;
+    height: 170px;
+    z-index: 100;
+    position: absolute;
+    width: 300px;
+    right: 100px;
+    opacity: 1;
+    border: 1px solid gray;
+    border-radius: 5px;
+    top: 240px;
+  }
+
+  // .modal-open .container{
+  //   -webkit-filter: blur(4px);
+  //   -moz-filter: blur(4px);
+  //   -o-filter: blur(4px);
+  //   -ms-filter: blur(4px);
+  //   filter: blur(4px);
+  //   filter: url("https://gist.githubusercontent.com/amitabhaghosh197/b7865b409e835b5a43b5/raw/1a255b551091924971e7dee8935fd38a7fdf7311/blur".svg#blur);
+  //   filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='4');
+  // }

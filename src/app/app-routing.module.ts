@@ -41,7 +41,7 @@ const routes: Routes = [
   {path:'profile',component:ProfileComponent},
   {path:'managerhome/createStadium',component:CreateStadiumComponent,
   canActivate:[AuthGuard,EFAGuard]},
-  {path:'createStadium/stadium',component:StadiumComponent}
+  {path:'vacantseats',component:StadiumComponent}
 ];
 
 @NgModule({

@@ -104,7 +104,13 @@ export class EditMatchComponent implements OnInit {
           this.router.navigate(['/viewmatches'])
           }
         },
-        err=>{alert("An error has occured!! try again")}
+        err=>{
+          console.log(err)
+          if(err.error.msg=="Stadium already reserved"){
+            alert("This Stadium is already reserved for another match at the same timre")
+
+          }
+        }
       )
 
     }

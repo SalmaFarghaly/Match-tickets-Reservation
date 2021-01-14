@@ -21,7 +21,6 @@ import { ViewMatchComponent } from './shared/view-match/view-match.component';
 import { EditMatchComponent } from './EFA-Manager/edit-match/edit-match.component';
 import { PendingRequestsComponent } from './adm/pending-requests/pending-requests.component';
 import { ViewUsersComponent } from './adm/view-users/view-users.component';
-import { EditProfileComponent } from './fan/edit-profile/edit-profile.component';
 import {AuthGuard} from './guards/auth.guard'
 import {AdminGuard} from './guards/admin.guard'
 import {EFAGuard} from './guards/efa.guard'
@@ -49,7 +48,6 @@ import { ReservedSeatsComponent } from './fan/reserved-seats/reserved-seats.comp
     EditMatchComponent,
     PendingRequestsComponent,
     ViewUsersComponent,
-    EditProfileComponent,
     ProfileComponent,
     StadiumComponent,
     CreateStadiumComponent,

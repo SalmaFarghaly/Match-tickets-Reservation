@@ -21,9 +21,11 @@ export class StadiumComponent implements OnInit {
   ngOnInit(): void {
     this.isLogged=this._auth.loggedIn();
     this.stadiumName=localStorage.getItem('Venue')+" Stadium";
+    this.type=localStorage.getItem('type');
   }
   //variable declarations
   stadiumName:string = "";
+  type:string="";
 
 
   rows: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];

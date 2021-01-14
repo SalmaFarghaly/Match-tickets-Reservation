@@ -16,6 +16,7 @@ import {cities} from '../../security/cities'
 export class ProfileComponent implements OnInit {
 
   userData;
+  appear:Boolean=false;
   // editForm;
   constructor(private _auth:AuthService) { }
 
@@ -75,37 +76,40 @@ export class ProfileComponent implements OnInit {
  msgErr="This field is required.";
 
  onFormSubmit(){
-  //  console.log(this.signUpForm.controls)
-  //  // We have already made sure that data is valid , now we can send it to
-  //  // the backend.
-  //  this.registerUserData={
 
-  //    'firstName':this.firstName.value,
-  //    'lastName':this.lastName.value,
+  this.appear=true;  
+ }
 
-  //    'password':this.password.value,
-  //    'birthDate':this.birthDate.value,
-  //    'gender':this.gender.value,
-  //    'city':this.city.value,
-  //    'address':this.address.value,
+ editUser(){
+  let user={
+    "firstName":this.firstName.value,
+    "lastName":this.lastName.value,
+    "password":this.password.value,
+    "birthDate":this.birthDate.value,
+    "city":this.city.value,
+    "address":this.address.value
+  };
+  let password=this.password.value
 
+  let data={
+    "user":user,
+    "password":password
+  }
+  this._auth.editUser(data).subscribe(
+    res=>{
+      if(res.message== 'update success'){
+        alert("Your Info has been Updated successfully!")
+        this.appear=false
+      }
+    },
+    err=>{
+      // if(err.error.message=="Auth failed Incorrect Password !!"){
+        alert("Auth failed Incorrect Password !!")
+        this.appear=false
+      // }
+    }
 
-  //  }
-  //   this._auth.registerUser(this.registerUserData).subscribe(
-  //     res=>{
-  //       if(res.message=="User created"){
-  //       console.log(res)
-  //       alert("You have signed up successfully")
-  //       }
-  //      },
-  //     err=>{
-  //      if(err.error.message=="Username already exists"){
-  //        alert("This Username already exists , Please choose another one");
-  //      }
-  //    }
-  //   )
-
-   
+  )
  }
  
 

@@ -10,6 +10,8 @@ export class AuthService {
   private _registerUrl="http://localhost:3000/user/signup"
   private _loginUrl="http://localhost:3000/user/login"
   private _getInfoUrl="http://localhost:3000/user/getInfo"
+  private _editUserUrl="http://localhost:3000/user/Edit"
+  
 
   constructor(private http:HttpClient) { }
 
@@ -35,5 +37,9 @@ export class AuthService {
   }
   getUser(){
     return this.http.get<any>(this._getInfoUrl);
+  }
+  editUser(user){
+    console.log(user)
+    return this.http.post<any>(this._editUserUrl,user);
   }
 }
