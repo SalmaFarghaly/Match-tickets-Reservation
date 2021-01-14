@@ -35,7 +35,6 @@ export class ViewUsersComponent implements OnInit {
     getUsers(){
       this.http.get<any>(this.user_server).subscribe(
         response => {
-          console.log(response);
           this.users = response;
         }
       );
@@ -43,7 +42,6 @@ export class ViewUsersComponent implements OnInit {
     }
   onDelete(user : User){
     this.deleteID = user._id ;
-    console.log(this.deleteID);
     if (confirm("Are you sure you want to delete?")){
       const deleteURL = 'http://localhost:3000/adm/remove/' + this.deleteID;
       this.http.post(deleteURL,{})

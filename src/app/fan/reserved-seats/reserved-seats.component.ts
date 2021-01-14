@@ -15,9 +15,9 @@ export class Ticket{
   styleUrls: ['./reserved-seats.component.css']
 })
 export class ReservedSeatsComponent implements OnInit {
-  tickets!: Ticket[];
+  tickets=[] ;//Ticket[];
   private toDelete: string = "";
-  private ticket_server = 'http://localhost:3000/adm/getUsers';
+  private ticket_server = 'http://localhost:3000/reservation/tickets';
   constructor(private http : HttpClient) {}
   
   ngOnInit(): void {
@@ -26,20 +26,48 @@ export class ReservedSeatsComponent implements OnInit {
    getTickets(){
     this.http.get<any>(this.ticket_server).subscribe(
       response => {
-        console.log(response);
-        this.tickets = response;
+
+        let tempTickets = response.tickets;
+        let counter = 0//tempTickets.length;
+
+   
+        while (counter < tempTickets.length){
+
+          let tempCounter=0//tempTickets[counter]
+
+
+          let curTicket=tempTickets[counter].tickets
+          while(tempCounter<curTicket.length){
+
+          let ticketObj=new Ticket(curTicket[tempCounter][1],curTicket[tempCounter][0])
+
+          this.tickets.push(ticketObj)
+          tempCounter++;
+          }
+          counter++;
+        }
+
       }
     );
    }
-   onDelete(ticket : Ticket){
+   onDelete(ticket,i){
     this.toDelete = ticket.seatNumber;
+    let matchid=localStorage.getItem('id')
     console.log(this.toDelete);
     if (confirm("Are you sure you want to delete?")){
-      const deleteURL = 'http://localhost:3000/adm/remove/' + this.toDelete;
-      this.http.post(deleteURL,{})
+      const deleteURL = 'http://localhost:3000/reservation/cancel/' +matchid //this.toDelete;
+      this.http.post(deleteURL,{
+        "seatNo":this.toDelete
+      })
       .subscribe((results) => {
+        alert("You reservation has been canceled :) ")
+        this.tickets=[];
         this.ngOnInit();
-        });
+        },
+        err=>{
+          alert("Sorry we can't cancel your reservation !")
+        }
+        );
     }
 
 }

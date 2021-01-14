@@ -5,7 +5,7 @@
 <div class="row">  
 <div id="edit-match-form" class="col-lg-6 col-md-8 col-sm-12 col-xs-12" >
     <form [formGroup]="editMatchForm" (ngSubmit)="editMatch()">
-
+        <h1>Edit Match Form</h1>
         <label>
             Home Team <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
             <select formControlName="homeTeam" class="form-control">
@@ -34,7 +34,7 @@
         <label>
             Match Venue <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
             <select formControlName="matchVenue" class="form-control">
-                <option *ngFor="let venue of venues" [selected]="venue==chosenMatch.StadiumName">{{venue}}</option>
+                <option *ngFor="let venue of venues" [selected]="venue==chosenMatch.StadiumName">{{venue.name}}</option>
             </select>
         </label>
 

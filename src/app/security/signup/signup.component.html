@@ -6,6 +6,8 @@
     
 <div id="sign-up-form" class="col-lg-6 col-md-8 col-sm-12 col-xs-12" >
     <form [formGroup]="signUpForm" (ngSubmit)="onFormSubmit()">
+        <h1>Sign Up Form</h1>
+        <br>
     
         <label>
         User Name <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>

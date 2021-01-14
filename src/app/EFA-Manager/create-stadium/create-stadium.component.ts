@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl,FormGroup,Validators,FormBuilder } from '@angular/forms';
 import { AuthService } from 'src/app/security/services/auth.service';
-
+import {MatchService} from '../../shared/view-match/services/matches/match.service'
 @Component({
+
   selector: 'app-create-stadium',
   templateUrl: './create-stadium.component.html',
-  styleUrls: ['./create-stadium.component.css']
+  styleUrls: ['./create-stadium.component.scss']
 })
 export class CreateStadiumComponent implements OnInit {
 
-  // today = new Date().toISOString();
-// console.log(today)
-// document.getElementById("daTi").min = '2019-02-17T10:38';
+
   
   selectedSeats;
   selectedRows;
@@ -23,7 +22,7 @@ export class CreateStadiumComponent implements OnInit {
     console.log(this.selectedRows)
   }
   stadiumData={}
-  constructor(private fb: FormBuilder,private _auth:AuthService) { }
+  constructor(private fb: FormBuilder,private _match:MatchService) { }
 
   ngOnInit(): void {
   }
@@ -44,14 +43,21 @@ export class CreateStadiumComponent implements OnInit {
   get nameStadium(){return this.signInForm.get('nameStadium')}
 
   onFormSubmit(){
-    console.log("Valid Sign In data")
     this.stadiumData={
-      'nameRows':this.nameRows.value,
-      'nameSeats':this.nameSeats.value,
-      'nameStadium':this.nameStadium.value
+      'name':this.nameStadium.value,
+      'rows':this.nameRows.value,
+      'cols':this.nameSeats.value
     }
-    console.log(this.stadiumData)
-    alert("Stadium Data:" + this.stadiumData);
+    this._match.createStaduim(this.stadiumData).subscribe(
+      res=>{
+        console.log(res)
+        alert("Stadium created!!!!");
+      },
+      err=>{
+        alert("Error in creating staduim")
+      }
+    )
+    
 
   }
   

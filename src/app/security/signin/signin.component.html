@@ -5,7 +5,8 @@
     
 <div id="sign-in-form" class="col-lg-6 col-md-8 col-sm-12 col-xs-12" >
     <form [formGroup]="signInForm" (ngSubmit)="onFormSubmit()">
-    
+        <h1>Sign In Form</h1>
+        <br>
         <label>
         User Name <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
         <input class="data required" placeholder="Enter your username" type="text" formControlName="userName">

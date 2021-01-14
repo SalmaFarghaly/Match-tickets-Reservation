@@ -5,7 +5,6 @@ import { differentTeams,differentMen,differentlinsemen } from './validators'
 import {MatchService} from '../../shared/view-match/services/matches/match.service'
 import {Router} from '@angular/router'
 import * as moment from 'moment'
-
 @Component({
   selector: 'app-create-match',
   templateUrl: './create-match.component.html',
@@ -24,15 +23,17 @@ export class CreateMatchComponent implements OnInit {
   constructor(private fb: FormBuilder,private _mauth:MatchService,private router:Router) { }
 
     // you should be taking it from the backend
-  venues=[
-    "ddd",
-    "gg",
-    "gd",
-    "rdd",
-    "dod",
-  ];
+  venues=[];
 
   ngOnInit(): void {
+    console.log("Min Dateeeeeee")
+    console.log(this.minDate)
+    this._mauth.getStadiums().subscribe(
+      res=>{
+        this.venues=res.stadiums
+
+      }
+    )
   }
 
 
@@ -75,7 +76,6 @@ export class CreateMatchComponent implements OnInit {
  get linseman2(){return this.createMatchForm.get('linseman2')}
 
  createMatch(){
-   console.log(this.createMatchForm.controls)
    this.matchData={
 
     "HomeTeam":this.homeTeam.value,
@@ -88,11 +88,8 @@ export class CreateMatchComponent implements OnInit {
     "LinesMan2":this.linseman2.value
     
     }
-    // console.log("DATAAAAAA")
-    // console.log(this.date.value)
     this._mauth.createMatch(this.matchData).subscribe(
       res=>{
-        console.log(res.message)
         if(res.message=="OK"){
           alert("The match has been create successfully");
           this.router.navigate(['/viewmatches'])

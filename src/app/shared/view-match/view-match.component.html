@@ -24,7 +24,7 @@
                     <p style="font-weight: 400;">{{match.MatchDate | date:'hh:mm a'}}</p>
                 </div>
                 <div style="display: flex;justify-content: space-between;align-items: center;">
-                <a id ="seats" href="/vacantseats" style="color: cornflowerblue;text-decoration: underline;">Vacant Seats</a>
+                <a id ="seats" href="/vacantseats" style="color: cornflowerblue;text-decoration: underline;" (click)="vacantSeats(i)">Vacant Seats </a>
                 <a *ngIf="type&&type!='fan'" id="edit" style="color: cornflowerblue;text-decoration: underline;" (click)="editMatch(i)">Edit</a>
             </div>
                 <!-- <p style="text-align:center">{{match.MainReferee}}</p> -->

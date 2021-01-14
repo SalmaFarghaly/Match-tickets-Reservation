@@ -6,15 +6,18 @@
     
 <div id="sign-in-form" class="col-lg-6 col-md-8 col-sm-12 col-xs-12" >
     <form [formGroup]="signInForm" (ngSubmit)="onFormSubmit()">
+        <h1>Create Stadium Form</h1>
+        <br>
         <label>
             Enter stadium name: <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
             <input class="data required" placeholder="Stadium name" type="text" formControlName="nameStadium">
         </label>
+        <br>
         
         <label>
                     Number of seats per row: <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
                 <div style = "width: 40%">
-                    <select class="data required" id="idSeats" formControlName = "nameSeats" [(ngModel)]="selectedSeats" (change)="selectedSeatsNumber()">
+                    <select style="border-radius: 5px;" class="data required" id="idSeats" formControlName = "nameSeats" [(ngModel)]="selectedSeats" (change)="selectedSeatsNumber()">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -25,17 +28,24 @@
                         <option value="8">8</option>
                         <option value="9">9</option>
                         <option value="10">10</option>
+                        <option value="10">11</option>
+                        <option value="10">12</option>
+                        <option value="10">13</option>
+                        <option value="10">14</option>
+                        <option value="10">15</option>
+                        <option value="10">16</option>
+                        <option value="10">17</option>
+                        <option value="10">18</option>
+                        <option value="10">19</option>
+                        <option value="10">20</option>
                     </select>
                 </div>
             </label>
-        
-       
-        <br>
         <br>
         <label>
                 Number of rows: <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
                 <div style = "width: 40%">
-                    <select class="data required" id="idRows" formControlName = "nameRows" [(ngModel)]="selectedRows" (change)="selectedRowsNumber()">
+                    <select style="border-radius: 5px;" class="data required" id="idRows" formControlName = "nameRows" [(ngModel)]="selectedRows" (change)="selectedRowsNumber()">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -46,11 +56,18 @@
                         <option value="8">8</option>
                         <option value="9">9</option>
                         <option value="10">10</option>
+                        <option value="10">11</option>
+                        <option value="10">12</option>
+                        <option value="10">13</option>
+                        <option value="10">14</option>
+                        <option value="10">15</option>
                     </select>
                 </div>
             </label>
-        <button type = "submit" routerLink = "stadium" class="btn btn-lg btn-secondary">
-                <i class="fa fa-submit"></i>Submit</button>
+        <!-- <button type = "submit" class="btn btn-lg btn-secondary">
+                <i class="fa fa-submit"></i>Submit</button> -->
+                <br>
+                <input style="display: inline;position: absolute;right: 0;"  [ngClass]="{'core-btn':signInForm.valid,'disabled-btn':!signInForm.valid}" id="submit-btn" type="submit" value="Create Stadium" [disabled]="!signInForm.valid">
 
         </form>
         </div>

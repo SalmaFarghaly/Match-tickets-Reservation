@@ -8,12 +8,12 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let ticket of tickets">
+            <tr *ngFor="let ticket of tickets;let i=index;">
             <td><span>{{ticket.seatNumber}}</span></td>
             <td><span>{{ticket.ticketID}}</span></td>
             <td>
                 <span>
-                    <button class="btn btn-sm btn-primary" (click) = onDelete(ticket)>
+                    <button class="btn btn-sm btn-primary" (click) = onDelete(ticket,i)>
                     <i class="fa fa-remove"></i>Cancel reservation</button>
                 </span>
             </td>

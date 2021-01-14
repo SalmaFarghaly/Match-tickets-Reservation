@@ -64,8 +64,7 @@ export class ViewMatchComponent implements OnInit {
 
   ngOnInit(): void {
     this._mauth.viewMatches().subscribe(
-      res=>{console.log(res.match);this.matches=res.match;console.log(this.matches)},
-      err=>console.log(err)
+      res=>{this.matches=res.match;console.log(this.matches)},
     )
     this.type=this._auth.userType()
   }
@@ -79,7 +78,6 @@ export class ViewMatchComponent implements OnInit {
   editMatch(idx){
    
     let match=this.matches[idx];
-    console.log(match.MatchDate);
     localStorage.setItem('HomeTeam',match.HomeTeam);
     localStorage.setItem('AwayTeam',match.AwayTeam);
     localStorage.setItem('Date',match.MatchDate);
@@ -92,6 +90,18 @@ export class ViewMatchComponent implements OnInit {
 
 
 
+  }
+  vacantSeats(idx){
+    let match=this.matches[idx];
+    localStorage.setItem('HomeTeam',match.HomeTeam);
+    localStorage.setItem('AwayTeam',match.AwayTeam);
+    localStorage.setItem('Date',match.MatchDate);
+    localStorage.setItem('Venue',match.StadiumName);
+    localStorage.setItem('Linesman1',match.LinesMan1);
+    localStorage.setItem('LinesMan2',match.LinesMan2);
+    localStorage.setItem('MainReferee',match.MainReferee);
+    localStorage.setItem('id',match.MatchID);
+    this.router.navigate(['/viewmatches'])
   }
 
 

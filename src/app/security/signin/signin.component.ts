@@ -28,14 +28,14 @@ export class SigninComponent implements OnInit {
   get password(){return this.signInForm.get('password')}
 
   onFormSubmit(){
-    console.log("Valid Sign In data")
+    
     this.userData={
-      'name':this.userName.value,
+      'name':this.userName.value.toLowerCase(),
       'password':this.password.value
     }
     this._auth.loginUser(this.userData).subscribe(
       res=>{
-        console.log(res)
+
         localStorage.setItem('token',res.token);
         localStorage.setItem('type',res.type);
         if(res.type=="manager"){

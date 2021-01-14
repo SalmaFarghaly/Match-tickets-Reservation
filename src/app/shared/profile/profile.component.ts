@@ -62,7 +62,7 @@ export class ProfileComponent implements OnInit {
         console.log(this.userData);
 
       },
-      err=>console.log(err)
+  
     )
     
   console.log(this.editForm.value)

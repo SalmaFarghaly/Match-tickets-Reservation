@@ -32,9 +32,7 @@ export class PendingRequestsComponent implements OnInit {
   getRequests(){
     this.http.get<any>(this.request_server).subscribe(
       response => {
-        console.log(response);
         this.requests = response;
-        console.log(this.requests);
       }
     );
     
@@ -55,7 +53,6 @@ export class PendingRequestsComponent implements OnInit {
   }
   onDecline(request: Request){
     this.deleteID = request._id ;
-    console.log(this.deleteID);
     if (confirm("Are you sure you want to decline request? Remember that declining request will delete the user.")){
       const deleteURL = 'http://localhost:3000/adm/decline/' + this.deleteID;
       this.http.post(deleteURL,{})

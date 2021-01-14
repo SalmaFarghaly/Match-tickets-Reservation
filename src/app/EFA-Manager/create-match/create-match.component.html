@@ -45,7 +45,7 @@
             Match Venue <ng-container [ngTemplateOutlet]="requiredMark"></ng-container>
             <select formControlName="matchVenue" class="form-control">
                 <option value="" disabled selected>Select the match venue</option>
-                <option *ngFor="let venue of venues">{{venue}}</option>
+                <option *ngFor="let venue of venues">{{venue.name}}</option>
             </select>
         </label>
 

@@ -17,13 +17,7 @@ export class EditMatchComponent implements OnInit {
   chosenMatch;
   teamsName=details.teams;
   referees=details.referees;
-  venues=[
-    "ddd",
-    "gg",
-    "gd",
-    "rdd",
-    "dod",
-  ];
+  venues=[];
 
   MatchDate:Date;
   matchID;
@@ -42,8 +36,12 @@ export class EditMatchComponent implements OnInit {
      "MainReferee":localStorage.getItem('MainReferee')
     }
     this.matchID=localStorage.getItem('id');
-    console.log(this.matchID)
-    console.log(this.chosenMatch.HomeTeam)
+    this._match.getStadiums().subscribe(
+      res=>{
+        this.venues=res.stadiums
+
+      }
+    )
 
   }
 
@@ -105,7 +103,6 @@ export class EditMatchComponent implements OnInit {
           }
         },
         err=>{
-          console.log(err)
           if(err.error.msg=="Stadium already reserved"){
             alert("This Stadium is already reserved for another match at the same timre")
 
