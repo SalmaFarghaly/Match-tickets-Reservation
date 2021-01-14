@@ -1,1 +1,23 @@
-<p>reserved-seats works!</p>
+<div class="container">
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+            <th>Seat Number</th>
+            <th>Ticket ID</th>
+            <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let ticket of tickets">
+            <td><span>{{ticket.seatNumber}}</span></td>
+            <td><span>{{ticket.ticketID}}</span></td>
+            <td>
+                <span>
+                    <button class="btn btn-sm btn-primary" (click) = onDelete(ticket)>
+                    <i class="fa fa-remove"></i>Cancel reservation</button>
+                </span>
+            </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>

@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from '../app/home/home.component'
 import { AdmComponent } from '../app/adm/adm.component'
-// import { PendingRequestsComponent } from '../app/pending-requests/pending-requests.component'
-// import { ViewUsersComponent } from '../app/view-users/view-users.component'
 import {PendingRequestsComponent} from '../app/adm/pending-requests/pending-requests.component'
 import {ViewUsersComponent} from '../app/adm/view-users/view-users.component'
 import {SignupComponent} from '../app/security/signup/signup.component'
@@ -20,6 +18,7 @@ import {ProfileComponent} from '../app/shared/profile/profile.component'
 // import { AuthService } from './security/services/auth.service';
 import {StadiumComponent} from '../app/stadium/stadium.component'
 import {CreateStadiumComponent} from '../app/EFA-Manager/create-stadium/create-stadium.component'
+import {ReservedSeatsComponent} from '../app/fan/reserved-seats/reserved-seats.component'
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -42,6 +41,7 @@ const routes: Routes = [
   {path:'managerhome/createStadium',component:CreateStadiumComponent,
   canActivate:[AuthGuard,EFAGuard]},
   {path:'vacantseats',component:StadiumComponent}
+  {path:'reservation',component:ReservedSeatsComponent,canActivate:[AuthGuard,FanGuard]}
 ];
 
 @NgModule({
